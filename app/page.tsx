@@ -1,4 +1,5 @@
 import Nav from '@/components/Nav'
+import PageContent from '@/components/PageContent'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Experience from '@/components/Experience'
@@ -8,14 +9,16 @@ import Contact from '@/components/Contact'
 
 export default function Home() {
   return (
-    <main>
+    <>
       <Nav />
-      <Hero />
-      <About />
-      <Experience />
-      <Skills />
-      <Projects />
-      <Contact />
-    </main>
+      <PageContent>
+        <Hero />
+        <About />
+        <Experience />
+        <Skills />
+        <Projects />
+        <Contact />
+      </PageContent>
+    </>
   )
 }
