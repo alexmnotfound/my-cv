@@ -6,10 +6,10 @@ import { useLang } from '@/context/LanguageContext'
 import { useNavMode } from '@/context/NavModeContext'
 
 const SECTIONS = [
-  { id: 'about',      Icon: User       },
-  { id: 'experience', Icon: Briefcase  },
-  { id: 'projects',   Icon: Layers     },
-  { id: 'contact',    Icon: Mail       },
+  { id: 'about',      Icon: User      },
+  { id: 'experience', Icon: Briefcase },
+  { id: 'projects',   Icon: Layers    },
+  { id: 'contact',    Icon: Mail      },
 ] as const
 
 export default function Nav() {
@@ -18,10 +18,8 @@ export default function Nav() {
   const { navMode, setNavMode } = useNavMode()
 
   const navLabels = [t.nav.about, t.nav.experience, t.nav.projects, t.nav.contact]
-
   const isDark = resolvedTheme === 'dark'
 
-  /* ── SHARED ELEMENTS ── */
   const LangToggle = () => (
     <div className="flex gap-0.5 rounded-lg p-0.5" style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}>
       <button onClick={() => lang === 'en' && toggleLang()} className={`px-1.5 py-1 rounded-md text-base transition-all ${lang === 'es' ? 'opacity-100' : 'opacity-30'}`} aria-label="Español">🇦🇷</button>
@@ -29,10 +27,30 @@ export default function Nav() {
     </div>
   )
 
-  const ThemeToggle = ({ size = 14 }: { size?: number }) => (
+  const ThemeToggle = () => (
     <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className="p-2 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Toggle theme">
-      {isDark ? <Sun size={size} /> : <Moon size={size} />}
+      {isDark ? <Sun size={14} /> : <Moon size={14} />}
     </button>
+  )
+
+  /* ── ICON BUTTON with tooltip ── */
+  const IconBtn = ({ onClick, label, children }: { onClick: () => void; label: string; children: React.ReactNode }) => (
+    <div className="relative group/iconbtn">
+      <button
+        onClick={onClick}
+        className="p-1.5 rounded-md transition-opacity hover:opacity-80"
+        style={{ color: 'var(--cv-muted)' }}
+        aria-label={label}
+      >
+        {children}
+      </button>
+      <div
+        className="absolute top-full left-1/2 -translate-x-1/2 mt-1.5 px-2 py-1 rounded-md text-[10px] whitespace-nowrap pointer-events-none z-[200] opacity-0 group-hover/iconbtn:opacity-100 transition-opacity duration-150"
+        style={{ background: 'var(--cv-heading)', color: 'var(--cv-bg)' }}
+      >
+        {label}
+      </div>
+    </div>
   )
 
   /* ── TOP BAR ── */
@@ -52,85 +70,106 @@ export default function Nav() {
 
           <div className="flex items-center gap-2">
             <LangToggle />
-            <ThemeToggle />
-            <button onClick={() => setNavMode('sidebar')} className="p-2 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Switch to sidebar">
+            <IconBtn onClick={() => setTheme(isDark ? 'light' : 'dark')} label={isDark ? 'Light mode' : 'Dark mode'}>
+              {isDark ? <Sun size={14} /> : <Moon size={14} />}
+            </IconBtn>
+            <IconBtn onClick={() => setNavMode('sidebar')} label="Sidebar">
               <PanelLeft size={14} />
-            </button>
+            </IconBtn>
           </div>
         </div>
       </nav>
     )
   }
 
-  /* ── SIDEBAR (expanded + collapsed) ── */
+  /* ── SIDEBAR ── */
   const isCollapsed = navMode === 'collapsed'
-  const sidebarWidth = isCollapsed ? '60px' : '240px'
 
   return (
     <aside
       className="fixed left-0 top-0 bottom-0 z-50 flex flex-col transition-all duration-300"
-      style={{ width: sidebarWidth, background: 'color-mix(in srgb, var(--cv-bg) 95%, transparent)', borderRight: '1px solid var(--cv-border)', backdropFilter: 'blur(16px)' }}
+      style={{
+        width: isCollapsed ? '60px' : '240px',
+        background: 'color-mix(in srgb, var(--cv-bg) 95%, transparent)',
+        borderRight: '1px solid var(--cv-border)',
+        backdropFilter: 'blur(16px)',
+        overflow: 'visible',
+      }}
     >
-      {/* Logo */}
-      <div className="flex items-center px-4 py-5" style={{ borderBottom: '1px solid var(--cv-border)', minHeight: '56px' }}>
+      {/* ── Header: logo + controls ── */}
+      <div
+        className="flex items-center justify-between px-4 py-4"
+        style={{ borderBottom: '1px solid var(--cv-border)', minHeight: '56px' }}
+      >
         <span className="text-[13px] font-black tracking-[3px]" style={{ color: 'var(--cv-heading)' }}>
           {isCollapsed ? 'M' : 'MR'}
         </span>
+
+        <div className="flex items-center gap-0.5">
+          {isCollapsed ? (
+            /* Collapsed: just expand button */
+            <IconBtn onClick={() => setNavMode('sidebar')} label="Expandir">
+              <PanelLeft size={13} />
+            </IconBtn>
+          ) : (
+            /* Expanded: collapse + switch to top */
+            <>
+              <IconBtn onClick={() => setNavMode('collapsed')} label="Minimizar">
+                <PanelLeftClose size={13} />
+              </IconBtn>
+              <IconBtn onClick={() => setNavMode('top')} label="Top bar">
+                <LayoutDashboard size={13} />
+              </IconBtn>
+            </>
+          )}
+        </div>
       </div>
 
-      {/* Nav items */}
-      <nav className="flex flex-col gap-1 p-2 flex-1 overflow-y-auto">
+      {/* ── Nav items ── */}
+      <nav className="flex flex-col gap-0.5 p-2 flex-1">
         {SECTIONS.map(({ id, Icon }, i) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all hover:opacity-100 group relative"
-            style={{ color: 'var(--cv-muted)' }}
-          >
-            <Icon size={16} className="flex-shrink-0" />
-            {!isCollapsed && (
-              <span className="text-[12px] uppercase tracking-wider">{navLabels[i]}</span>
-            )}
-            {/* Tooltip on collapsed */}
+          <div key={id} className="relative group">
+            <a
+              href={`#${id}`}
+              className="flex items-center gap-3 rounded-lg px-3 py-2.5 transition-all hover:opacity-100"
+              style={{ color: 'var(--cv-muted)' }}
+            >
+              <Icon size={16} className="flex-shrink-0" />
+              {!isCollapsed && (
+                <span className="text-[12px] uppercase tracking-wider">{navLabels[i]}</span>
+              )}
+            </a>
+
+            {/* Tooltip — always show on hover, but only useful when collapsed */}
             {isCollapsed && (
-              <div className="absolute left-full ml-2 px-2 py-1 rounded-md text-[11px] whitespace-nowrap opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-50"
-                style={{ background: 'var(--cv-heading)', color: 'var(--cv-bg)' }}>
+              <div
+                className="absolute left-full top-1/2 -translate-y-1/2 ml-3 px-2.5 py-1.5 rounded-md text-[11px] whitespace-nowrap pointer-events-none z-[200] opacity-0 group-hover:opacity-100 transition-opacity duration-150"
+                style={{ background: 'var(--cv-heading)', color: 'var(--cv-bg)', boxShadow: '0 4px 12px rgba(0,0,0,0.3)' }}
+              >
                 {navLabels[i]}
+                {/* Arrow */}
+                <div className="absolute right-full top-1/2 -translate-y-1/2 border-4 border-transparent" style={{ borderRightColor: 'var(--cv-heading)' }} />
               </div>
             )}
-          </a>
+          </div>
         ))}
       </nav>
 
-      {/* Bottom controls */}
+      {/* ── Bottom controls ── */}
       <div className="flex flex-col gap-2 p-3" style={{ borderTop: '1px solid var(--cv-border)' }}>
         {isCollapsed ? (
-          <>
-            <button onClick={() => lang === 'en' && toggleLang()} className="text-base text-center w-full py-1 transition-opacity hover:opacity-80" aria-label="Español">🇦🇷</button>
-            <button onClick={() => lang === 'es' && toggleLang()} className="text-base text-center w-full py-1 transition-opacity hover:opacity-80" aria-label="English">🇺🇸</button>
-            <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className="w-full flex justify-center py-1.5 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)' }} aria-label="Toggle theme">
+          <div className="flex flex-col items-center gap-2">
+            <button onClick={() => lang === 'en' && toggleLang()} className={`text-base transition-all ${lang === 'es' ? 'opacity-100' : 'opacity-30'}`} aria-label="Español">🇦🇷</button>
+            <button onClick={() => lang === 'es' && toggleLang()} className={`text-base transition-all ${lang === 'en' ? 'opacity-100' : 'opacity-30'}`} aria-label="English">🇺🇸</button>
+            <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className="transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)' }} aria-label="Toggle theme">
               {isDark ? <Sun size={14} /> : <Moon size={14} />}
             </button>
-            {/* Expand */}
-            <button onClick={() => setNavMode('sidebar')} className="w-full flex justify-center py-1.5 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Expand sidebar">
-              <PanelLeft size={14} />
-            </button>
-          </>
+          </div>
         ) : (
-          <>
+          <div className="flex items-center gap-2">
             <LangToggle />
-            <div className="flex gap-2">
-              <ThemeToggle />
-              {/* Collapse */}
-              <button onClick={() => setNavMode('collapsed')} className="flex-1 flex items-center justify-center rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Collapse sidebar">
-                <PanelLeftClose size={14} />
-              </button>
-              {/* Back to top */}
-              <button onClick={() => setNavMode('top')} className="flex-1 flex items-center justify-center rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Switch to top bar">
-                <LayoutDashboard size={14} />
-              </button>
-            </div>
-          </>
+            <ThemeToggle />
+          </div>
         )}
       </div>
     </aside>
