@@ -1,0 +1,41 @@
+# Matías Rodríguez
+
+> AI Engineer and Tech Lead based in Argentina. I design and build AI-powered systems — from conversational agents to full SaaS platforms. 7+ years backend, 4+ years AI/LLM.
+
+## About
+
+I work in Python, Go, and TypeScript, with experience leading technical teams and delivering products end to end. Available for remote roles, freelance projects, and AI/backend consulting.
+
+## Skills
+
+- **AI & LLMs**: Multi-agent systems, RAG pipelines, chatbots with human handoff, automated quality evaluation
+- **Backend**: REST and gRPC APIs in Python/Go, multi-tenant architectures, microservices, authentication
+- **Cloud**: AWS, GCP, Docker, CI/CD, Firebase
+- **Frontend**: Next.js, React, TypeScript
+
+## Projects
+
+### Guest Experience Automation
+AI-powered guest experience platform for boutique hotels. Automated check-in, concierge recommendations, and review generation using LLMs. Reduced manual workload by 70%.
+
+### WhatsApp Chatbots
+End-to-end WhatsApp automation for SMBs. Multi-turn conversations, CRM integration, and human handoff. Built for scale with multi-tenant architecture.
+
+### Trading Tools
+Algorithmic trading infrastructure for retail traders. Backtesting engine, real-time signal alerts, and portfolio analytics dashboard.
+
+### Web Projects
+Full-stack web apps for small businesses and coaches. Next.js frontends with Firebase backends. Live examples: efigueiras-coach.web.app, mvp-quiadsa.web.app.
+
+## Experience
+
+- **Freelance AI Engineer / Tech Lead** (2022–present) — AI systems, LLM integrations, backend APIs, team leadership
+- **Backend Engineer** (2017–2022) — Python/Go services, cloud infrastructure, trading systems
+
+## Contact
+
+- Email: rodriguez.ma@protonmail.com
+- WhatsApp: +54 9 388 470-1268
+- GitHub: github.com/alexmnotfound
+- LinkedIn: linkedin.com/in/matias-rodriguez
+- Website: https://matias-rodriguez.web.app
