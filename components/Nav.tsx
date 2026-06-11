@@ -1,13 +1,18 @@
 'use client'
 
+import { useState } from 'react'
+import Image from 'next/image'
 import { useTheme } from 'next-themes'
-import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard } from 'lucide-react'
+import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard, Cpu, Home } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
 import { useNavMode } from '@/context/NavModeContext'
+import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 const SECTIONS = [
+  { id: 'home',       Icon: Home      },
   { id: 'about',      Icon: User      },
   { id: 'experience', Icon: Briefcase },
+  { id: 'skills',     Icon: Cpu       },
   { id: 'projects',   Icon: Layers    },
   { id: 'contact',    Icon: Mail      },
 ] as const
@@ -16,8 +21,20 @@ export default function Nav() {
   const { t, lang, toggleLang } = useLang()
   const { resolvedTheme, setTheme } = useTheme()
   const { navMode, setNavMode } = useNavMode()
+  const [photoOpen, setPhotoOpen] = useState(false)
 
-  const navLabels = [t.nav.about, t.nav.experience, t.nav.projects, t.nav.contact]
+  const Avatar = ({ size = 28 }: { size?: number }) => (
+    <button
+      onClick={() => setPhotoOpen(true)}
+      className="rounded-full overflow-hidden flex-shrink-0 transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2"
+      style={{ width: size, height: size, border: '2px solid var(--cv-border)' }}
+      aria-label="Ver foto de perfil"
+    >
+      <Image src="/profile.png" alt="Matias Rodriguez" width={size} height={size} className="object-cover w-full h-full" />
+    </button>
+  )
+
+  const navLabels = [t.nav.home, t.nav.about, t.nav.experience, t.nav.skills, t.nav.projects, t.nav.contact]
   const isDark = resolvedTheme === 'dark'
 
   const LangToggle = () => (
@@ -31,6 +48,14 @@ export default function Nav() {
     <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className="p-2 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Toggle theme">
       {isDark ? <Sun size={14} /> : <Moon size={14} />}
     </button>
+  )
+
+  const PhotoDialog = () => (
+    <Dialog open={photoOpen} onOpenChange={setPhotoOpen}>
+      <DialogContent className="p-0 overflow-hidden max-w-sm border-0" style={{ background: 'transparent', boxShadow: 'none' }}>
+        <Image src="/profile.png" alt="Matias Rodriguez" width={400} height={400} className="w-full h-auto rounded-xl object-cover" />
+      </DialogContent>
+    </Dialog>
   )
 
   /* ── ICON BUTTON with tooltip ── */
@@ -56,9 +81,10 @@ export default function Nav() {
   /* ── TOP BAR ── */
   if (navMode === 'top') {
     return (
+      <>
       <nav className="sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: 'color-mix(in srgb, var(--cv-bg) 85%, transparent)', borderColor: 'var(--cv-border)' }}>
         <div className="mx-auto max-w-[1080px] px-8 py-3.5 flex items-center justify-between">
-          <span className="text-[13px] font-black tracking-[3px]" style={{ color: 'var(--cv-heading)' }}>MR</span>
+          <Avatar size={28} />
 
           <div className="hidden md:flex gap-8">
             {SECTIONS.map(({ id }, i) => (
@@ -79,6 +105,8 @@ export default function Nav() {
           </div>
         </div>
       </nav>
+      <PhotoDialog />
+      </>
     )
   }
 
@@ -101,9 +129,7 @@ export default function Nav() {
         className="flex items-center justify-between px-4 py-4"
         style={{ borderBottom: '1px solid var(--cv-border)', minHeight: '56px' }}
       >
-        <span className="text-[13px] font-black tracking-[3px]" style={{ color: 'var(--cv-heading)' }}>
-          {isCollapsed ? 'M' : 'MR'}
-        </span>
+        <Avatar size={isCollapsed ? 28 : 32} />
 
         <div className="flex items-center gap-0.5">
           {isCollapsed ? (
@@ -172,6 +198,7 @@ export default function Nav() {
           </div>
         )}
       </div>
+      <PhotoDialog />
     </aside>
   )
 }

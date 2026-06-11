@@ -1,5 +1,6 @@
 import Nav from '@/components/Nav'
 import PageContent from '@/components/PageContent'
+import FadeIn from '@/components/FadeIn'
 import Hero from '@/components/Hero'
 import About from '@/components/About'
 import Experience from '@/components/Experience'
@@ -12,12 +13,12 @@ export default function Home() {
     <>
       <Nav />
       <PageContent>
-        <Hero />
-        <About />
-        <Experience />
-        <Skills />
-        <Projects />
-        <Contact />
+        <FadeIn delay={200}><Hero /></FadeIn>
+        <FadeIn delay={350}><About /></FadeIn>
+        <FadeIn delay={350}><Experience /></FadeIn>
+        <FadeIn delay={350}><Skills /></FadeIn>
+        <FadeIn delay={350}><Projects /></FadeIn>
+        <FadeIn delay={350}><Contact /></FadeIn>
       </PageContent>
     </>
   )

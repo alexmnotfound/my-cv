@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useLang } from '@/context/LanguageContext'
 
 export default function Hero() {
@@ -83,19 +84,16 @@ export default function Hero() {
           className="w-[280px] flex-shrink-0 rounded-2xl p-7"
           style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', backdropFilter: 'blur(12px)' }}
         >
-          <div
-            className="mb-4 flex h-12 w-12 items-center justify-center rounded-full text-[16px] font-black"
-            style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-heading)' }}
-          >
-            MR
+          <div className="mb-4 h-12 w-12 rounded-full overflow-hidden" style={{ border: '1px solid var(--cv-border)' }}>
+            <Image src="/profile.png" alt="Matías Rodríguez" width={48} height={48} className="object-cover w-full h-full" />
           </div>
           <p className="text-[14px] font-bold" style={{ color: 'var(--cv-heading)' }}>Matías Rodríguez</p>
           <p className="mb-5 text-[11px]" style={{ color: 'var(--cv-muted)' }}>{h.card_role}</p>
 
           <div className="mb-4 grid grid-cols-2 gap-2.5">
             {([
-              { n: '6+', l: h.stat_python },
-              { n: '3+', l: h.stat_go },
+              { n: '7+', l: h.stat_python },
+              { n: '4+', l: h.stat_go },
               { n: '10+', l: h.stat_exp },
               { n: '3',   l: h.stat_langs },
             ] as const).map(({ n, l }) => (
@@ -110,17 +108,13 @@ export default function Hero() {
             ))}
           </div>
 
-          <div className="flex flex-wrap gap-1.5">
-            {['LLMs', 'FastAPI', 'Next.js', 'AWS', 'Supabase'].map(tag => (
-              <span
-                key={tag}
-                className="rounded text-[10px] px-2 py-0.5"
-                style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-accent)' }}
-              >
-                {tag}
-              </span>
-            ))}
-          </div>
+          <a
+            href="#skills"
+            className="flex items-center justify-center gap-1.5 w-full rounded-xl py-2 text-[11px] font-medium uppercase tracking-wider transition-opacity hover:opacity-80"
+            style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
+          >
+            Ver skills →
+          </a>
         </div>
 
       </div>
