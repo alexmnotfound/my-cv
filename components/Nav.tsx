@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react'
 import { useTheme } from 'next-themes'
-import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard, Cpu, Home } from 'lucide-react'
+import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard, Cpu, Home, Menu, X } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
 import { useNavMode } from '@/context/NavModeContext'
 import Logo from '@/components/Logo'
@@ -22,7 +22,13 @@ export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme()
   const { navMode, setNavMode } = useNavMode()
   const [mounted, setMounted] = useState(false)
+  const [mobileOpen, setMobileOpen] = useState(false)
   useEffect(() => setMounted(true), [])
+  useEffect(() => {
+    if (mobileOpen) document.body.style.overflow = 'hidden'
+    else document.body.style.overflow = ''
+    return () => { document.body.style.overflow = '' }
+  }, [mobileOpen])
 
   const LogoLink = ({ size = 28 }: { size?: number }) => (
     <a
@@ -71,32 +77,90 @@ export default function Nav() {
     </div>
   )
 
+  /* ── MOBILE MENU OVERLAY ── */
+  const MobileMenu = () => (
+    <>
+      {/* Backdrop */}
+      <div
+        className="fixed inset-0 z-[60] md:hidden"
+        style={{ background: 'rgba(0,0,0,0.5)', backdropFilter: 'blur(4px)' }}
+        onClick={() => setMobileOpen(false)}
+      />
+      {/* Drawer */}
+      <div
+        className="fixed top-0 right-0 bottom-0 z-[70] w-[260px] flex flex-col md:hidden"
+        style={{ background: 'var(--cv-bg)', borderLeft: '1px solid var(--cv-border)' }}
+      >
+        <div className="flex items-center justify-between px-5 py-4" style={{ borderBottom: '1px solid var(--cv-border)' }}>
+          <LogoLink size={24} />
+          <button onClick={() => setMobileOpen(false)} style={{ color: 'var(--cv-muted)' }} aria-label="Cerrar menú">
+            <X size={20} />
+          </button>
+        </div>
+        <nav className="flex flex-col gap-1 p-4 flex-1">
+          {SECTIONS.map(({ id, Icon }, i) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              onClick={() => setMobileOpen(false)}
+              className="flex items-center gap-3 rounded-lg px-4 py-3 transition-opacity hover:opacity-80"
+              style={{ color: 'var(--cv-text)' }}
+            >
+              <Icon size={16} style={{ color: 'var(--cv-muted)' }} />
+              <span className="text-[13px] uppercase tracking-wider">{navLabels[i]}</span>
+            </a>
+          ))}
+        </nav>
+        <div className="flex items-center gap-3 p-5" style={{ borderTop: '1px solid var(--cv-border)' }}>
+          <LangToggle />
+          <button onClick={() => setTheme(isDark ? 'light' : 'dark')} className="p-2 rounded-lg transition-opacity hover:opacity-80" style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }} aria-label="Toggle theme">
+            {isDark ? <Sun size={14} /> : <Moon size={14} />}
+          </button>
+        </div>
+      </div>
+    </>
+  )
+
   /* ── TOP BAR ── */
   if (navMode === 'top') {
     return (
-      <nav className="sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: 'color-mix(in srgb, var(--cv-bg) 85%, transparent)', borderColor: 'var(--cv-border)' }}>
-        <div className="mx-auto max-w-[1080px] px-8 py-3.5 flex items-center justify-between">
-          <LogoLink size={28} />
+      <>
+        <nav className="sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: 'color-mix(in srgb, var(--cv-bg) 85%, transparent)', borderColor: 'var(--cv-border)' }}>
+          <div className="mx-auto max-w-[1080px] px-8 py-3.5 flex items-center justify-between">
+            <LogoLink size={28} />
 
-          <div className="hidden md:flex gap-8">
-            {SECTIONS.map(({ id }, i) => (
-              <a key={id} href={`#${id}`} className="text-[11px] uppercase tracking-widest transition-opacity hover:opacity-100" style={{ color: 'var(--cv-muted)' }}>
-                {navLabels[i]}
-              </a>
-            ))}
-          </div>
+            <div className="hidden md:flex gap-8">
+              {SECTIONS.map(({ id }, i) => (
+                <a key={id} href={`#${id}`} className="text-[11px] uppercase tracking-widest transition-opacity hover:opacity-100" style={{ color: 'var(--cv-muted)' }}>
+                  {navLabels[i]}
+                </a>
+              ))}
+            </div>
 
-          <div className="flex items-center gap-2">
-            <LangToggle />
-            <IconBtn onClick={() => setTheme(isDark ? 'light' : 'dark')} label={isDark ? 'Light mode' : 'Dark mode'}>
-              {isDark ? <Sun size={14} /> : <Moon size={14} />}
-            </IconBtn>
-            <IconBtn onClick={() => setNavMode('sidebar')} label="Sidebar">
-              <PanelLeft size={14} />
-            </IconBtn>
+            <div className="flex items-center gap-2">
+              <div className="hidden md:flex items-center gap-2">
+                <LangToggle />
+                <IconBtn onClick={() => setTheme(isDark ? 'light' : 'dark')} label={isDark ? 'Light mode' : 'Dark mode'}>
+                  {isDark ? <Sun size={14} /> : <Moon size={14} />}
+                </IconBtn>
+                <IconBtn onClick={() => setNavMode('sidebar')} label="Sidebar">
+                  <PanelLeft size={14} />
+                </IconBtn>
+              </div>
+              {/* Hamburger — mobile only */}
+              <button
+                className="md:hidden p-2 rounded-lg transition-opacity hover:opacity-80"
+                style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }}
+                onClick={() => setMobileOpen(true)}
+                aria-label="Abrir menú"
+              >
+                <Menu size={18} />
+              </button>
+            </div>
           </div>
-        </div>
-      </nav>
+        </nav>
+        {mobileOpen && <MobileMenu />}
+      </>
     )
   }
 
@@ -104,8 +168,25 @@ export default function Nav() {
   const isCollapsed = navMode === 'collapsed'
 
   return (
+    <>
+    {/* Mobile: top bar + hamburger when in sidebar mode */}
+    <nav className="md:hidden sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: 'color-mix(in srgb, var(--cv-bg) 85%, transparent)', borderColor: 'var(--cv-border)' }}>
+      <div className="px-5 py-3.5 flex items-center justify-between">
+        <LogoLink size={24} />
+        <button
+          className="p-2 rounded-lg transition-opacity hover:opacity-80"
+          style={{ color: 'var(--cv-muted)', border: '1px solid var(--cv-border)' }}
+          onClick={() => setMobileOpen(true)}
+          aria-label="Abrir menú"
+        >
+          <Menu size={18} />
+        </button>
+      </div>
+    </nav>
+    {mobileOpen && <MobileMenu />}
+
     <aside
-      className="fixed left-0 top-0 bottom-0 z-50 flex flex-col transition-all duration-300"
+      className="hidden md:flex fixed left-0 top-0 bottom-0 z-50 flex-col transition-all duration-300"
       style={{
         width: isCollapsed ? '60px' : '240px',
         background: 'color-mix(in srgb, var(--cv-bg) 95%, transparent)',
@@ -189,5 +270,6 @@ export default function Nav() {
         )}
       </div>
     </aside>
+    </>
   )
 }

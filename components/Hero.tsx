@@ -87,7 +87,7 @@ export default function Hero() {
 
         {/* Right — glass stats card */}
         <div
-          className="w-[280px] flex-shrink-0 rounded-2xl flex flex-col overflow-hidden"
+          className="w-[280px] flex-shrink-0 mx-auto md:mx-0 rounded-2xl flex flex-col overflow-hidden"
           style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', backdropFilter: 'blur(12px)' }}
         >
           <button
