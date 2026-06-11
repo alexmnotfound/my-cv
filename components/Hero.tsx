@@ -87,18 +87,17 @@ export default function Hero() {
 
         {/* Right — glass stats card */}
         <div
-          className="w-[280px] flex-shrink-0 rounded-2xl p-7 flex flex-col"
+          className="w-[280px] flex-shrink-0 rounded-2xl flex flex-col overflow-hidden"
           style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', backdropFilter: 'blur(12px)' }}
         >
           <button
             onClick={() => setPhotoOpen(true)}
-            className="mb-4 mx-auto h-12 w-12 rounded-full overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
-            style={{ border: '1px solid var(--cv-border)' }}
+            className="block w-full h-[160px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
+            style={{ borderBottom: '1px solid var(--cv-border)' }}
           >
-            <Image src="/profile.png" alt="Matías Rodríguez" width={48} height={48} className="object-cover w-full h-full" />
+            <Image src="/profile.png" alt="Matías Rodríguez" width={280} height={160} className="object-cover w-full h-full" />
           </button>
-          <p className="text-[14px] font-bold" style={{ color: 'var(--cv-heading)' }}>Matías Rodríguez</p>
-          <p className="mb-5 text-[11px]" style={{ color: 'var(--cv-muted)' }}>{h.card_role}</p>
+          <div className="p-7 pt-5 flex flex-col">
 
           <div className="mb-4 grid grid-cols-2 gap-2.5">
             {([
@@ -138,6 +137,7 @@ export default function Hero() {
           >
             Ver skills →
           </a>
+          </div>
 
         </div>
 
