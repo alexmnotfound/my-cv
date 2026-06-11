@@ -92,10 +92,10 @@ export default function Hero() {
         >
           <button
             onClick={() => setPhotoOpen(true)}
-            className="block w-full flex-1 min-h-[130px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
+            className="relative block w-full flex-1 min-h-[130px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
             style={{ borderBottom: '1px solid var(--cv-border)' }}
           >
-            <Image src="/profile.png" alt="Matías Rodríguez" width={280} height={130} className="object-cover object-top w-full h-full" />
+            <Image src="/profile.png" alt="Matías Rodríguez" fill sizes="280px" className="object-cover object-top" />
           </button>
           <div className="p-5 pt-4 flex flex-col">
 
