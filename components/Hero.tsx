@@ -99,7 +99,7 @@ export default function Hero() {
           </button>
           <div className="p-5 pt-4 flex flex-col">
 
-          <div className="mb-4 grid grid-cols-2 gap-2.5">
+          <div className="grid grid-cols-2 gap-2.5">
             {([
               { n: '7+',  l: h.stat_python, href: '#experience' },
               { n: '4+',  l: h.stat_go,     href: '#experience' },
@@ -124,19 +124,12 @@ export default function Hero() {
                   style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}
                 >
                   <div className="text-xl font-black" style={{ color: 'var(--cv-heading)' }}>{n}</div>
-                  <div className="text-[9px] mt-0.5" style={{ color: 'var(--cv-muted)' }}>{l}</div>
+                  <div className="text-[9px] mt-0.5 flex items-center gap-1" style={{ color: 'var(--cv-muted)' }}>{l} <span aria-hidden="true">→</span></div>
                 </button>
               )
             )}
           </div>
 
-          <a
-            href="#skills"
-            className="flex items-center justify-center gap-1.5 w-full rounded-xl py-2 text-[11px] font-medium uppercase tracking-wider transition-opacity hover:opacity-80"
-            style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
-          >
-            Ver skills →
-          </a>
           </div>
 
         </div>
