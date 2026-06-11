@@ -37,5 +37,5 @@ Full-stack web apps for small businesses and coaches. Next.js frontends with Fir
 - Email: rodriguez.ma@protonmail.com
 - WhatsApp: +54 9 388 470-1268
 - GitHub: github.com/alexmnotfound
-- LinkedIn: linkedin.com/in/matias-rodriguez
+- LinkedIn: linkedin.com/in/mrodriguez-ar
 - Website: https://matias-rodriguez.web.app

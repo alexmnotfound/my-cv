@@ -5,9 +5,9 @@ import { useLang } from '@/context/LanguageContext'
 
 const LINKS = [
   { Icon: Mail,          href: 'mailto:rodriguez.ma@protonmail.com',       name: 'Email',     handle: 'rodriguez.ma@protonmail.com' },
-  { Icon: MessageCircle, href: 'https://wa.me/5493884701268',              name: 'WhatsApp',  handle: '+54 9 388 470-1268' },
+  { Icon: MessageCircle, href: 'https://wa.me/5493884701268?text=Hola%20Mat%C3%ADas!%20Vi%20tu%20CV%20y%20quer%C3%ADa%20hacerte%20una%20consulta.',              name: 'WhatsApp',  handle: '+54 9 388 470-1268' },
   { Icon: GitBranch,     href: 'https://github.com/alexmnotfound',         name: 'GitHub',    handle: 'github.com/alexmnotfound' },
-  { Icon: Link,          href: 'https://linkedin.com/in/matias-rodriguez', name: 'LinkedIn',  handle: 'linkedin.com/in/matias-rodriguez' },
+  { Icon: Link,          href: 'https://linkedin.com/in/mrodriguez-ar/', name: 'LinkedIn',  handle: 'linkedin.com/in/mrodriguez-ar/' },
 ]
 
 export default function Contact() {
