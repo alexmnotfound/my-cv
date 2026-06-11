@@ -36,7 +36,7 @@ export default function Hero() {
         }}
       />
 
-      <div className="relative z-10 mx-auto max-w-[1080px] w-full flex items-end justify-between gap-16 flex-wrap py-20">
+      <div className="relative z-10 mx-auto max-w-[1080px] w-full flex items-stretch justify-between gap-16 flex-wrap py-20">
 
         {/* Left */}
         <div className="flex-1 min-w-[280px]">
@@ -92,7 +92,7 @@ export default function Hero() {
         >
           <button
             onClick={() => setPhotoOpen(true)}
-            className="block w-full h-[130px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
+            className="block w-full flex-1 min-h-[130px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
             style={{ borderBottom: '1px solid var(--cv-border)' }}
           >
             <Image src="/profile.png" alt="Matías Rodríguez" width={280} height={130} className="object-cover object-top w-full h-full" />
