@@ -95,7 +95,7 @@ export default function Hero() {
             className="block w-full h-[160px] overflow-hidden transition-opacity hover:opacity-80 focus:outline-none"
             style={{ borderBottom: '1px solid var(--cv-border)' }}
           >
-            <Image src="/profile.png" alt="Matías Rodríguez" width={280} height={160} className="object-cover w-full h-full" />
+            <Image src="/profile.png" alt="Matías Rodríguez" width={280} height={160} className="object-cover object-top w-full h-full" />
           </button>
           <div className="p-7 pt-5 flex flex-col">
 
