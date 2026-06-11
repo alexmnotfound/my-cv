@@ -37,6 +37,14 @@ export default function Experience() {
                 <div className="mb-0.5 text-[15px] font-bold" style={{ color: 'var(--cv-heading)' }}>{item.role}</div>
                 <div className="mb-2.5 text-[12px]" style={{ color: 'var(--cv-muted)' }}>{item.company}</div>
                 <div className="mb-3 text-[13px] leading-[1.7]" style={{ color: 'var(--cv-muted)' }}>{item.desc}</div>
+                <div className="mb-4 flex flex-col gap-1.5">
+                  {item.highlights.map((h, j) => (
+                    <div key={j} className="flex gap-2 text-[12px] leading-relaxed" style={{ color: 'var(--cv-muted)' }}>
+                      <span className="mt-2 h-1 w-1 flex-shrink-0 rounded-full" style={{ background: 'var(--cv-accent)' }} />
+                      {h}
+                    </div>
+                  ))}
+                </div>
                 <div className="flex flex-wrap gap-1.5">
                   {item.tags.map(tag => (
                     <span

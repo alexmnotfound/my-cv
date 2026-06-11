@@ -5,20 +5,23 @@ import { useState } from 'react'
 export type AccordionItemData = {
   id: string | number
   title: string
+  company?: string
   subtitle: string
   imageUrl: string
   tag?: string
   description?: string
-  features?: string[]
+  highlights?: readonly string[]
+  links?: readonly { label: string; url: string }[]
 }
 
 type AccordionItemProps = {
   item: AccordionItemData
   isActive: boolean
   onMouseEnter: () => void
+  onClick: () => void
 }
 
-const AccordionItem = ({ item, isActive, onMouseEnter }: AccordionItemProps) => {
+const AccordionItem = ({ item, isActive, onMouseEnter, onClick }: AccordionItemProps) => {
   return (
     <div
       className={`
@@ -28,6 +31,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter }: AccordionItemProps) => 
       `}
       style={{ minHeight: '420px' }}
       onMouseEnter={onMouseEnter}
+      onClick={onClick}
     >
       {/* Background Image */}
       <img
@@ -54,15 +58,17 @@ const AccordionItem = ({ item, isActive, onMouseEnter }: AccordionItemProps) => 
 
       {/* Caption */}
       <div className="absolute bottom-0 left-0 right-0 p-5">
-        <p
-          className={`text-white font-bold whitespace-nowrap transition-all duration-500
-            ${isActive ? 'text-lg opacity-100' : 'text-sm opacity-70 rotate-90 origin-bottom-left translate-x-6 -translate-y-4'}`}
-        >
-          {item.title}
-        </p>
-        {isActive && (
-          <p className="mt-1 text-[12px] text-white/60 transition-opacity duration-500">
-            {item.subtitle}
+        {isActive ? (
+          <>
+            <p className="text-white font-bold text-lg">{item.title}</p>
+            <p className="mt-1 text-[12px] text-white/60">{item.subtitle}</p>
+          </>
+        ) : (
+          <p
+            className="text-white/80 font-semibold text-[13px] tracking-wide"
+            style={{ writingMode: 'vertical-rl', textOrientation: 'mixed', transform: 'rotate(180deg)' }}
+          >
+            {item.title}
           </p>
         )}
       </div>
@@ -73,9 +79,10 @@ const AccordionItem = ({ item, isActive, onMouseEnter }: AccordionItemProps) => 
 type LandingAccordionItemProps = {
   items: AccordionItemData[]
   defaultActive?: number
+  onItemClick?: (item: AccordionItemData) => void
 }
 
-export function LandingAccordionItem({ items, defaultActive = 0 }: LandingAccordionItemProps) {
+export function LandingAccordionItem({ items, defaultActive = 0, onItemClick }: LandingAccordionItemProps) {
   const [activeIndex, setActiveIndex] = useState(defaultActive)
 
   return (
@@ -86,6 +93,7 @@ export function LandingAccordionItem({ items, defaultActive = 0 }: LandingAccord
           item={item}
           isActive={index === activeIndex}
           onMouseEnter={() => setActiveIndex(index)}
+          onClick={() => onItemClick?.(item)}
         />
       ))}
     </div>

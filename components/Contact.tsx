@@ -1,6 +1,14 @@
 'use client'
 
+import { Mail, MessageCircle, GitBranch, Link } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
+
+const LINKS = [
+  { Icon: Mail,          href: 'mailto:rodriguez.ma@protonmail.com',       name: 'Email',     handle: 'rodriguez.ma@protonmail.com' },
+  { Icon: MessageCircle, href: 'https://wa.me/5493884701268',              name: 'WhatsApp',  handle: '+54 9 388 470-1268' },
+  { Icon: GitBranch,     href: 'https://github.com/alexmnotfound',         name: 'GitHub',    handle: 'github.com/alexmnotfound' },
+  { Icon: Link,          href: 'https://linkedin.com/in/matias-rodriguez', name: 'LinkedIn',  handle: 'linkedin.com/in/matias-rodriguez' },
+]
 
 export default function Contact() {
   const { t } = useLang()
@@ -8,53 +16,57 @@ export default function Contact() {
   const f = t.footer
 
   return (
-    <>
-      <section id="contact" className="border-b px-8 py-20" style={{ borderColor: 'var(--cv-border)' }}>
-        <div className="mx-auto max-w-[1080px]">
+    <footer id="contact" style={{ borderTop: '1px solid var(--cv-border)' }}>
 
-          <div className="mb-12 flex items-center gap-3 text-[10px] uppercase tracking-[3px]" style={{ color: 'var(--cv-muted)' }}>
-            {c.section_label}
-            <div className="flex-1 h-px" style={{ background: 'var(--cv-border)' }} />
-          </div>
+      <div className="px-8 py-16 mx-auto max-w-[1080px]">
+        <div className="flex flex-col md:flex-row md:items-start justify-between gap-12">
 
-          <div className="max-w-[600px]">
-            <h2 className="mb-4 text-[36px] font-black leading-tight tracking-tight" style={{ color: 'var(--cv-heading)' }}>
+          {/* Left */}
+          <div>
+            <p className="mb-4 text-[10px] uppercase tracking-[3px]" style={{ color: 'var(--cv-muted)' }}>
+              {c.section_label}
+            </p>
+            <h2 className="text-[36px] font-black leading-tight tracking-tight" style={{ color: 'var(--cv-heading)' }}>
               {c.heading}
             </h2>
-            <p className="mb-8 text-[14px] leading-[1.7]" style={{ color: 'var(--cv-muted)' }}>
-              {c.body}
-            </p>
+          </div>
 
-            <div className="flex flex-col gap-3">
-              {c.links.map(link => (
-                <a
-                  key={link.name}
-                  href={link.href}
-                  className="flex items-center justify-between rounded-xl px-5 py-4 transition-opacity hover:opacity-80"
-                  style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}
-                >
-                  <div className="flex items-center gap-3">
-                    <span className="text-lg opacity-60">{link.icon}</span>
-                    <div>
-                      <div className="text-[13px] font-semibold" style={{ color: 'var(--cv-heading)' }}>{link.name}</div>
-                      <div className="text-[12px]" style={{ color: 'var(--cv-muted)' }}>{link.handle}</div>
-                    </div>
+          {/* Right — contact links */}
+          <div className="flex flex-col min-w-[300px]">
+            {LINKS.map(({ Icon, href, name, handle }) => (
+              <a
+                key={name}
+                href={href}
+                target={href.startsWith('mailto') ? undefined : '_blank'}
+                rel="noopener noreferrer"
+                className="group flex items-center justify-between py-4 transition-opacity hover:opacity-60"
+                style={{ borderBottom: '1px solid var(--cv-border)' }}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className="flex items-center justify-center h-8 w-8 rounded-full flex-shrink-0"
+                    style={{ border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
+                  >
+                    <Icon size={14} />
                   </div>
-                  <span className="text-base" style={{ color: 'var(--cv-muted)' }}>→</span>
-                </a>
-              ))}
-            </div>
+                  <div>
+                    <div className="text-[13px] font-medium" style={{ color: 'var(--cv-heading)' }}>{name}</div>
+                    <div className="text-[11px]" style={{ color: 'var(--cv-muted)' }}>{handle}</div>
+                  </div>
+                </div>
+                <span className="text-[12px] transition-transform group-hover:translate-x-1 group-hover:-translate-y-1" style={{ color: 'var(--cv-muted)' }}>↗</span>
+              </a>
+            ))}
           </div>
 
         </div>
-      </section>
+      </div>
 
-      <footer className="px-8 py-6" style={{ borderTop: '1px solid var(--cv-border)' }}>
-        <div className="mx-auto max-w-[1080px] flex justify-between items-center">
-          <span className="text-[12px]" style={{ color: 'var(--cv-muted)' }}>{f.left}</span>
-          <span className="text-[12px]" style={{ color: 'var(--cv-muted)' }}>{f.right}</span>
-        </div>
-      </footer>
-    </>
+      <div className="px-8 py-4 mx-auto max-w-[1080px] flex justify-between items-center" style={{ borderTop: '1px solid var(--cv-border)' }}>
+        <span className="text-[11px]" style={{ color: 'var(--cv-muted)' }}>{f.left}</span>
+        <span className="text-[11px]" style={{ color: 'var(--cv-muted)' }}>{f.right}</span>
+      </div>
+
+    </footer>
   )
 }

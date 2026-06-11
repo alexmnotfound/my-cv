@@ -1,12 +1,11 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard, Cpu, Home } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
 import { useNavMode } from '@/context/NavModeContext'
-import { Dialog, DialogContent } from '@/components/ui/dialog'
 
 const SECTIONS = [
   { id: 'home',       Icon: Home      },
@@ -22,6 +21,8 @@ export default function Nav() {
   const { resolvedTheme, setTheme } = useTheme()
   const { navMode, setNavMode } = useNavMode()
   const [photoOpen, setPhotoOpen] = useState(false)
+  const [mounted, setMounted] = useState(false)
+  useEffect(() => setMounted(true), [])
 
   const Avatar = ({ size = 28 }: { size?: number }) => (
     <button
@@ -35,7 +36,7 @@ export default function Nav() {
   )
 
   const navLabels = [t.nav.home, t.nav.about, t.nav.experience, t.nav.skills, t.nav.projects, t.nav.contact]
-  const isDark = resolvedTheme === 'dark'
+  const isDark = mounted ? resolvedTheme === 'dark' : false
 
   const LangToggle = () => (
     <div className="flex gap-0.5 rounded-lg p-0.5" style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}>
@@ -50,13 +51,25 @@ export default function Nav() {
     </button>
   )
 
-  const PhotoDialog = () => (
-    <Dialog open={photoOpen} onOpenChange={setPhotoOpen}>
-      <DialogContent className="p-0 overflow-hidden max-w-sm border-0" style={{ background: 'transparent', boxShadow: 'none' }}>
-        <Image src="/profile.png" alt="Matias Rodriguez" width={400} height={400} className="w-full h-auto rounded-xl object-cover" />
-      </DialogContent>
-    </Dialog>
-  )
+  const PhotoDialog = () => photoOpen ? (
+    <div
+      className="fixed inset-0 z-[100] flex items-center justify-center"
+      onClick={() => setPhotoOpen(false)}
+      style={{ animation: 'modal-backdrop-in 0.25s ease forwards' }}
+    >
+      <div
+        className="relative rounded-2xl overflow-hidden"
+        onClick={e => e.stopPropagation()}
+        style={{
+          width: 320,
+          boxShadow: '0 30px 70px rgba(0,0,0,0.3)',
+          animation: 'modal-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+        }}
+      >
+        <Image src="/profile.png" alt="Matias Rodriguez" width={320} height={320} className="w-full h-auto object-cover block" />
+      </div>
+    </div>
+  ) : null
 
   /* ── ICON BUTTON with tooltip ── */
   const IconBtn = ({ onClick, label, children }: { onClick: () => void; label: string; children: React.ReactNode }) => (
