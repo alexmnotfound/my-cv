@@ -41,7 +41,7 @@ export const content = {
         {
           icon: 'server',
           title: 'Backend & APIs',
-          desc: 'APIs REST y gRPC en Python/Go, arquitecturas multi-tenant, autenticación, microservicios y automatización.',
+          desc: 'APIs REST en Python/Go, arquitecturas multi-tenant, autenticación, microservicios y automatización.',
         },
         {
           icon: 'cloud',
@@ -292,7 +292,7 @@ export const content = {
         {
           icon: 'server',
           title: 'Backend & APIs',
-          desc: 'REST and gRPC APIs in Python/Go, multi-tenant architectures, authentication, microservices, and automation.',
+          desc: 'REST APIs in Python/Go, multi-tenant architectures, authentication, microservices, and automation.',
         },
         {
           icon: 'cloud',
@@ -493,7 +493,7 @@ export const content = {
       body: 'Open to remote roles, freelance projects, and AI/Backend consulting. Fast response guaranteed.',
       links: [
         { icon: '✉️', name: 'Email', handle: 'rodriguez.ma@protonmail.com', href: 'mailto:rodriguez.ma@protonmail.com' },
-        { icon: '💬', name: 'WhatsApp', handle: '+54 9 388 470-1268', href: 'https://wa.me/5493884701268?text=Hola%20Mat%C3%ADas!%20Vi%20tu%20CV%20y%20quer%C3%ADa%20hacerte%20una%20consulta.' },
+        { icon: '💬', name: 'WhatsApp', handle: '+54 9 388 470-1268', href: 'https://wa.me/5493884701268?text=Hi%20Mat%C3%ADas!%20I%20saw%20your%20CV%20and%20wanted%20to%20reach%20out.' },
         { icon: '🐙', name: 'GitHub', handle: 'github.com/alexmnotfound', href: 'https://github.com/alexmnotfound' },
         { icon: '💼', name: 'LinkedIn', handle: 'linkedin.com/in/matias-rodriguez', href: 'https://linkedin.com/in/matias-rodriguez' },
       ],
