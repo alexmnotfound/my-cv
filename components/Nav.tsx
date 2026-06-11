@@ -1,11 +1,11 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import Image from 'next/image'
 import { useTheme } from 'next-themes'
 import { Moon, Sun, User, Briefcase, Layers, Mail, PanelLeft, PanelLeftClose, LayoutDashboard, Cpu, Home } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
 import { useNavMode } from '@/context/NavModeContext'
+import Logo from '@/components/Logo'
 
 const SECTIONS = [
   { id: 'home',       Icon: Home      },
@@ -20,19 +20,18 @@ export default function Nav() {
   const { t, lang, toggleLang } = useLang()
   const { resolvedTheme, setTheme } = useTheme()
   const { navMode, setNavMode } = useNavMode()
-  const [photoOpen, setPhotoOpen] = useState(false)
   const [mounted, setMounted] = useState(false)
   useEffect(() => setMounted(true), [])
 
-  const Avatar = ({ size = 28 }: { size?: number }) => (
-    <button
-      onClick={() => setPhotoOpen(true)}
-      className="rounded-full overflow-hidden flex-shrink-0 transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2"
-      style={{ width: size, height: size, border: '2px solid var(--cv-border)' }}
-      aria-label="Ver foto de perfil"
+  const LogoLink = ({ size = 28 }: { size?: number }) => (
+    <a
+      href="#home"
+      className="flex-shrink-0 transition-opacity hover:opacity-80 focus:outline-none focus:ring-2 focus:ring-offset-2 rounded-lg"
+      style={{ color: 'var(--cv-text)' }}
+      aria-label="Ir al inicio"
     >
-      <Image src="/profile.png" alt="Matias Rodriguez" width={size} height={size} className="object-cover w-full h-full" />
-    </button>
+      <Logo size={size} />
+    </a>
   )
 
   const navLabels = [t.nav.home, t.nav.about, t.nav.experience, t.nav.skills, t.nav.projects, t.nav.contact]
@@ -50,26 +49,6 @@ export default function Nav() {
       {isDark ? <Sun size={14} /> : <Moon size={14} />}
     </button>
   )
-
-  const PhotoDialog = () => photoOpen ? (
-    <div
-      className="fixed inset-0 z-[100] flex items-center justify-center"
-      onClick={() => setPhotoOpen(false)}
-      style={{ animation: 'modal-backdrop-in 0.25s ease forwards' }}
-    >
-      <div
-        className="relative rounded-2xl overflow-hidden"
-        onClick={e => e.stopPropagation()}
-        style={{
-          width: 320,
-          boxShadow: '0 30px 70px rgba(0,0,0,0.3)',
-          animation: 'modal-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
-        }}
-      >
-        <Image src="/profile.png" alt="Matias Rodriguez" width={320} height={320} className="w-full h-auto object-cover block" />
-      </div>
-    </div>
-  ) : null
 
   /* ── ICON BUTTON with tooltip ── */
   const IconBtn = ({ onClick, label, children }: { onClick: () => void; label: string; children: React.ReactNode }) => (
@@ -94,10 +73,9 @@ export default function Nav() {
   /* ── TOP BAR ── */
   if (navMode === 'top') {
     return (
-      <>
       <nav className="sticky top-0 z-50 border-b backdrop-blur-md" style={{ background: 'color-mix(in srgb, var(--cv-bg) 85%, transparent)', borderColor: 'var(--cv-border)' }}>
         <div className="mx-auto max-w-[1080px] px-8 py-3.5 flex items-center justify-between">
-          <Avatar size={28} />
+          <LogoLink size={28} />
 
           <div className="hidden md:flex gap-8">
             {SECTIONS.map(({ id }, i) => (
@@ -118,8 +96,6 @@ export default function Nav() {
           </div>
         </div>
       </nav>
-      <PhotoDialog />
-      </>
     )
   }
 
@@ -142,7 +118,7 @@ export default function Nav() {
         className="flex items-center justify-between px-4 py-4"
         style={{ borderBottom: '1px solid var(--cv-border)', minHeight: '56px' }}
       >
-        <Avatar size={isCollapsed ? 28 : 32} />
+        <LogoLink size={isCollapsed ? 28 : 32} />
 
         <div className="flex items-center gap-0.5">
           {isCollapsed ? (
@@ -211,7 +187,6 @@ export default function Nav() {
           </div>
         )}
       </div>
-      <PhotoDialog />
     </aside>
   )
 }
