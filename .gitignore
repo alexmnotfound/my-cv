@@ -44,3 +44,5 @@ out/
 
 docs/superpowers/
 .claude/
+.firebase/
+firebase-debug.log
