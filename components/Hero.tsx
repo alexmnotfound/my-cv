@@ -74,7 +74,7 @@ export default function Hero() {
               {h.cta_projects}
             </a>
             <a
-              href="https://drive.google.com/uc?export=download&id=1MHcVF5NPNgsrXekDcvnVvOtyNs7QkTIw"
+              href="https://drive.google.com/uc?export=download&id=1OB8HqWu4oLFK6oVP498HydNEy8tLmM4a"
               target="_blank"
               rel="noopener noreferrer"
               className="rounded-lg px-7 py-3 text-[13px] font-medium transition-opacity hover:opacity-80"
