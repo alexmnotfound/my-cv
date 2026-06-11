@@ -13,6 +13,7 @@ export default function Hero() {
   return (
     <>
     <section
+      id="home"
       className="relative min-h-[88vh] flex items-center justify-center overflow-hidden px-8 border-b"
       style={{ borderColor: 'var(--cv-border)' }}
     >
