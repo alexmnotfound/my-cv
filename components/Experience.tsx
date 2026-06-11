@@ -1,10 +1,18 @@
 'use client'
 
 import { useLang } from '@/context/LanguageContext'
+import { useSkillFilter } from '@/context/SkillFilterContext'
 
 export default function Experience() {
   const { t } = useLang()
   const e = t.experience
+  const { activeFilter } = useSkillFilter()
+
+  const activeSkillNames = activeFilter
+    ? new Set(t.skills.items.filter(s => s.category === activeFilter).map(s => s.name as string))
+    : null
+
+  const isHighlighted = (tag: string) => activeSkillNames?.has(tag) ?? false
 
   return (
     <section id="experience" className="border-b px-8 py-20" style={{ borderColor: 'var(--cv-border)' }}>
@@ -46,15 +54,23 @@ export default function Experience() {
                   ))}
                 </div>
                 <div className="flex flex-wrap gap-1.5">
-                  {item.tags.map(tag => (
-                    <span
-                      key={tag}
-                      className="rounded text-[10px] px-2 py-0.5"
-                      style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
-                    >
-                      {tag}
-                    </span>
-                  ))}
+                  {item.tags.map(tag => {
+                    const lit = isHighlighted(tag)
+                    return (
+                      <span
+                        key={tag}
+                        className="rounded text-[10px] px-2 py-0.5 transition-all duration-300"
+                        style={{
+                          background: lit ? 'var(--cv-accent)' : 'var(--cv-surface)',
+                          border: `1px solid ${lit ? 'var(--cv-accent)' : 'var(--cv-border)'}`,
+                          color: lit ? 'var(--cv-bg)' : activeSkillNames ? 'color-mix(in srgb, var(--cv-muted) 40%, transparent)' : 'var(--cv-muted)',
+                          fontWeight: lit ? 600 : 400,
+                        }}
+                      >
+                        {tag}
+                      </span>
+                    )
+                  })}
                 </div>
               </div>
             </div>

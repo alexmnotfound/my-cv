@@ -1,7 +1,7 @@
 'use client'
 
-import { useState } from 'react'
 import { useLang } from '@/context/LanguageContext'
+import { useSkillFilter } from '@/context/SkillFilterContext'
 
 function Badge({ name }: { name: string }) {
   return (
@@ -38,7 +38,7 @@ function MarqueeRow({ items, reverse }: { items: { name: string }[]; reverse?: b
 export default function Skills() {
   const { t } = useLang()
   const s = t.skills
-  const [activeFilter, setActiveFilter] = useState<string | null>(null)
+  const { activeFilter, setActiveFilter } = useSkillFilter()
 
   const mid = Math.ceil(s.items.length / 2)
   const row1Items = s.items.slice(0, mid)

@@ -10,9 +10,10 @@ import Logo from '@/components/Logo'
 const SECTIONS = [
   { id: 'home',       Icon: Home      },
   { id: 'about',      Icon: User      },
-  { id: 'experience', Icon: Briefcase },
-  { id: 'skills',     Icon: Cpu       },
   { id: 'projects',   Icon: Layers    },
+  
+  { id: 'skills',     Icon: Cpu       },
+  { id: 'experience', Icon: Briefcase },
   { id: 'contact',    Icon: Mail      },
 ] as const
 
@@ -34,7 +35,7 @@ export default function Nav() {
     </a>
   )
 
-  const navLabels = [t.nav.home, t.nav.about, t.nav.experience, t.nav.skills, t.nav.projects, t.nav.contact]
+  const navLabels = [t.nav.home, t.nav.about, t.nav.projects, t.nav.skills, t.nav.experience, t.nav.contact]
   const isDark = mounted ? resolvedTheme === 'dark' : false
 
   const LangToggle = () => (

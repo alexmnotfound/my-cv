@@ -51,14 +51,14 @@ export const content = {
       ],
     },
     experience: {
-      section_label: '02 — Experiencia',
+      section_label: '04 — Experiencia',
       items: [
         {
           role: 'Desarrollador Freelance — SaaS & Web',
           company: 'Freelance',
           period: 'Ene 2026 – presente',
           desc: 'Desarrollo de productos propios y para clientes: SaaS multi-tenant, plataforma WhatsApp con IA, y landings con integración de IA.',
-          tags: ['TypeScript', 'Next.js', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'WhatsApp Business API', 'OpenAI API', 'Firebase'],
+          tags: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'Prisma', 'WhatsApp Business API', 'OpenAI API', 'Claude API', 'Firebase'],
           highlights: [
             'Desarrollé Smart Class: SaaS multi-tenant para gimnasios con reservas, créditos y lista de espera; transacciones atómicas y notificaciones en tiempo real en la app móvil.',
             'Construí MR Chatty: plataforma multi-tenant de inbox WhatsApp con agente de IA configurable por empresa y handoff humano.',
@@ -71,7 +71,7 @@ export const content = {
           company: 'Sonder',
           period: 'Abr 2025 – Nov 2025',
           desc: 'Dos productos para Sonder (hospitality): Moorea Agents — plataforma multi-agente de soporte al huésped — y Moorea Dashboard — panel interno de ops para el equipo de Sonder.',
-          tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird'],
+          tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird', 'Redis', 'MongoDB', 'Vector DBs', 'LLMs / Agents', 'OpenAI API', 'RAG', 'LangChain', 'Prompt Engineering'],
           highlights: [
             'Construí sistema multi-agente con agente orquestador que enruta conversaciones de huéspedes a 4 sub-agentes especializados (amenities, FAQ, pagos y operaciones) integrados con APIs internas.',
             'Implementé pipeline de QA automático: evaluación continua de respuestas del bot en producción con métricas de precisión, escalaciones, alucinaciones y fallas de guardrails.',
@@ -83,7 +83,7 @@ export const content = {
           company: 'Slingr',
           period: 'Dic 2021 – Ene 2025',
           desc: 'Lideré equipo en desarrollo de herramientas AI. Integré ML APIs para image/video recognition, speech-to-text y text analysis. Aseguré best practices en calidad de código, DevOps y CI/CD.',
-          tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'CI/CD'],
+          tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'REST APIs', 'Microservices', 'CI/CD', 'AWS', 'GCP', 'GitHub Actions', 'Terraform', 'Kubernetes', 'LLMs / Agents', 'OpenAI API', 'RAG', 'Prompt Engineering', 'Embeddings'],
           highlights: [
             'Lideré equipo de desarrollo de herramientas AI: arquitectura de soluciones, code reviews y definición de estándares de calidad.',
             'Integré ML APIs externas para reconocimiento de imagen/video, speech-to-text y análisis de texto en productos de clientes.',
@@ -95,7 +95,7 @@ export const content = {
           company: 'Freelance',
           period: 'Feb 2020 – May 2023',
           desc: 'Suite de herramientas para trading algorítmico e inversión: dashboard de fondos, motor de backtesting, servicio de alertas técnicas y API de datos de mercado.',
-          tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase Auth', 'pandas', 'Telegram Bot API'],
+          tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase', 'Pandas', 'SQLAlchemy', 'PyTorch', 'Django', 'Telegram Bot API'],
           highlights: [
             'Diseñé MR Capitals Dashboard: gestión de fondos de inversión con motor de NAV, conversión depósito→cuotas y comisiones dinámicas sobre ganancias.',
             'Construí motor de backtesting candle-by-candle con simulación de estrategias y métricas de return %, win rate y max drawdown.',
@@ -132,7 +132,6 @@ export const content = {
         { name: 'TypeScript', category: 'backend' },
         { name: 'FastAPI', category: 'backend' },
         { name: 'Node.js', category: 'backend' },
-        { name: 'gRPC', category: 'backend' },
         { name: 'REST APIs', category: 'backend' },
         { name: 'Django', category: 'backend' },
         { name: 'Microservices', category: 'backend' },
@@ -145,6 +144,8 @@ export const content = {
         { name: 'LLMs / Agents', category: 'ai' },
         { name: 'Claude API', category: 'ai' },
         { name: 'OpenAI API', category: 'ai' },
+        { name: 'OpenAI Agents SDK', category: 'ai' },
+        { name: 'LangSmith', category: 'ai' },
         { name: 'RAG', category: 'ai' },
         { name: 'LangChain', category: 'ai' },
         { name: 'Embeddings', category: 'ai' },
@@ -164,12 +165,14 @@ export const content = {
         { name: 'Redis', category: 'data' },
         { name: 'Vector DBs', category: 'data' },
         { name: 'Supabase', category: 'data' },
+        { name: 'Snowflake', category: 'data' },
+        { name: 'Prisma', category: 'data' },
         { name: 'SQLAlchemy', category: 'data' },
         { name: 'Pandas', category: 'data' },
       ],
     },
     projects: {
-      section_label: '04 — Proyectos',
+      section_label: '02 — Proyectos',
       items: [
         {
           id: 'moorea',
@@ -299,14 +302,14 @@ export const content = {
       ],
     },
     experience: {
-      section_label: '02 — Experience',
+      section_label: '04 — Experience',
       items: [
         {
           role: 'Freelance Developer — SaaS & Web',
           company: 'Freelance',
           period: 'Jan 2026 – present',
           desc: 'Building products for clients and own ventures: multi-tenant SaaS, AI-powered WhatsApp platform, and AI-integrated landing pages.',
-          tags: ['TypeScript', 'Next.js', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'WhatsApp Business API', 'OpenAI API', 'Firebase'],
+          tags: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'Prisma', 'WhatsApp Business API', 'OpenAI API', 'Claude API', 'Firebase'],
           highlights: [
             'Built Smart Class: multi-tenant SaaS for gyms with bookings, credits, and waitlists; atomic transactions and real-time notifications in the mobile app.',
             'Built MR Chatty: multi-tenant shared WhatsApp inbox with a configurable AI agent per company and human handoff.',
@@ -319,7 +322,7 @@ export const content = {
           company: 'Sonder',
           period: 'Apr 2025 – Nov 2025',
           desc: 'Two products for Sonder (hospitality): Moorea Agents — multi-agent guest support platform — and Moorea Dashboard — internal ops panel for the Sonder team.',
-          tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird'],
+          tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird', 'Redis', 'MongoDB', 'Vector DBs', 'LLMs / Agents', 'OpenAI API', 'RAG', 'LangChain', 'Prompt Engineering'],
           highlights: [
             'Built multi-agent system with an orchestrator agent that routes guest conversations to 4 specialized sub-agents (amenities, FAQ, payments, and operations) integrated with internal APIs.',
             'Implemented automated QA pipeline: continuous evaluation of bot responses in production tracking accuracy, escalations, hallucinations, and guardrail failures.',
@@ -331,7 +334,7 @@ export const content = {
           company: 'Slingr',
           period: 'Dec 2021 – Jan 2025',
           desc: 'Led AI tooling team. Integrated ML APIs for image/video recognition, speech-to-text, and text analysis. Ensured best practices in code quality, DevOps, and CI/CD.',
-          tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'CI/CD'],
+          tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'REST APIs', 'Microservices', 'CI/CD', 'AWS', 'GCP', 'GitHub Actions', 'Terraform', 'Kubernetes', 'LLMs / Agents', 'OpenAI API', 'RAG', 'Prompt Engineering', 'Embeddings'],
           highlights: [
             'Led AI tooling development team: solution architecture, code reviews, and engineering standards.',
             'Integrated external ML APIs for image/video recognition, speech-to-text, and text analysis across client products.',
@@ -343,7 +346,7 @@ export const content = {
           company: 'Freelance',
           period: 'Feb 2020 – May 2023',
           desc: 'Algorithmic trading suite and investment tools: fund management dashboard, backtesting engine, technical alerts service, and market data API.',
-          tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase Auth', 'pandas', 'Telegram Bot API'],
+          tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase', 'Pandas', 'SQLAlchemy', 'PyTorch', 'Django', 'Telegram Bot API'],
           highlights: [
             'Designed MR Capitals Dashboard: fund management platform with a NAV engine, deposit→shares conversion, and dynamic profit-based commissions.',
             'Built candle-by-candle backtesting engine: strategy simulation with parameter sweeps and metrics for return %, win rate, and max drawdown.',
@@ -380,7 +383,6 @@ export const content = {
         { name: 'TypeScript', category: 'backend' },
         { name: 'FastAPI', category: 'backend' },
         { name: 'Node.js', category: 'backend' },
-        { name: 'gRPC', category: 'backend' },
         { name: 'REST APIs', category: 'backend' },
         { name: 'Django', category: 'backend' },
         { name: 'Microservices', category: 'backend' },
@@ -393,6 +395,8 @@ export const content = {
         { name: 'LLMs / Agents', category: 'ai' },
         { name: 'Claude API', category: 'ai' },
         { name: 'OpenAI API', category: 'ai' },
+        { name: 'OpenAI Agents SDK', category: 'ai' },
+        { name: 'LangSmith', category: 'ai' },
         { name: 'RAG', category: 'ai' },
         { name: 'LangChain', category: 'ai' },
         { name: 'Embeddings', category: 'ai' },
@@ -412,12 +416,14 @@ export const content = {
         { name: 'Redis', category: 'data' },
         { name: 'Vector DBs', category: 'data' },
         { name: 'Supabase', category: 'data' },
+        { name: 'Snowflake', category: 'data' },
+        { name: 'Prisma', category: 'data' },
         { name: 'SQLAlchemy', category: 'data' },
         { name: 'Pandas', category: 'data' },
       ],
     },
     projects: {
-      section_label: '04 — Projects',
+      section_label: '02 — Projects',
       items: [
         {
           id: 'moorea',
