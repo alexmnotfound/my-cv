@@ -73,8 +73,9 @@ export default function Hero() {
               {h.cta_projects}
             </a>
             <a
-              href="/cv-matias.pdf"
-              download
+              href="https://drive.google.com/uc?export=download&id=1MHcVF5NPNgsrXekDcvnVvOtyNs7QkTIw"
+              target="_blank"
+              rel="noopener noreferrer"
               className="rounded-lg px-7 py-3 text-[13px] font-medium transition-opacity hover:opacity-80"
               style={{ border: '1px solid var(--cv-border)', color: 'var(--cv-text)', background: 'var(--cv-surface)' }}
             >

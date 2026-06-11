@@ -34,17 +34,17 @@ export const content = {
       body: 'Diseño y construyo sistemas impulsados por IA — desde agentes conversacionales hasta plataformas SaaS completas. Trabajo en Python, Go y TypeScript, con experiencia liderando equipos técnicos y entregando productos de punta a punta.',
       highlights: [
         {
-          icon: '🤖',
+          icon: 'bot',
           title: 'Agentes & LLMs',
           desc: 'Sistemas multi-agente, chatbots con handoff humano, pipelines RAG y evaluación automática de calidad en producción.',
         },
         {
-          icon: '⚙️',
+          icon: 'server',
           title: 'Backend & APIs',
           desc: 'APIs REST y gRPC en Python/Go, arquitecturas multi-tenant, autenticación, microservicios y automatización.',
         },
         {
-          icon: '☁️',
+          icon: 'cloud',
           title: 'Cloud & Full-Stack',
           desc: 'AWS, GCP, Docker, CI/CD, Firebase. Frontend en Next.js/React cuando el proyecto lo requiere.',
         },
@@ -266,17 +266,17 @@ export const content = {
       body: 'I design and build AI-powered systems — from conversational agents to full SaaS platforms. I work in Python, Go, and TypeScript, with experience leading technical teams and delivering products end to end.',
       highlights: [
         {
-          icon: '🤖',
+          icon: 'bot',
           title: 'Agents & LLMs',
           desc: 'Multi-agent systems, chatbots with human handoff, RAG pipelines, and automated quality evaluation in production.',
         },
         {
-          icon: '⚙️',
+          icon: 'server',
           title: 'Backend & APIs',
           desc: 'REST and gRPC APIs in Python/Go, multi-tenant architectures, authentication, microservices, and automation.',
         },
         {
-          icon: '☁️',
+          icon: 'cloud',
           title: 'Cloud & Full-Stack',
           desc: 'AWS, GCP, Docker, CI/CD, Firebase. Frontend in Next.js/React when the project calls for it.',
         },

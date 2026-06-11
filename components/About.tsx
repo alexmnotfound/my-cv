@@ -1,6 +1,13 @@
 'use client'
 
+import { Bot, Server, Cloud, LucideIcon } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
+
+const ICON_MAP: Record<string, LucideIcon> = {
+  bot: Bot,
+  server: Server,
+  cloud: Cloud,
+}
 
 export default function About() {
   const { t } = useLang()
@@ -27,19 +34,27 @@ export default function About() {
           </div>
 
           <div className="flex flex-col gap-4">
-            {a.highlights.map((h) => (
-              <div
-                key={h.title}
-                className="flex gap-4 items-start rounded-xl p-5"
-                style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}
-              >
-                <span className="text-xl flex-shrink-0 mt-0.5">{h.icon}</span>
-                <div>
-                  <div className="mb-1 text-[13px] font-bold" style={{ color: 'var(--cv-heading)' }}>{h.title}</div>
-                  <div className="text-[12px] leading-relaxed" style={{ color: 'var(--cv-muted)' }}>{h.desc}</div>
+            {a.highlights.map((h) => {
+              const Icon = ICON_MAP[h.icon] ?? Bot
+              return (
+                <div
+                  key={h.title}
+                  className="flex gap-4 items-start rounded-xl p-5"
+                  style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}
+                >
+                  <div
+                    className="flex items-center justify-center h-8 w-8 rounded-full flex-shrink-0 mt-0.5"
+                    style={{ border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
+                  >
+                    <Icon size={14} />
+                  </div>
+                  <div>
+                    <div className="mb-1 text-[13px] font-bold" style={{ color: 'var(--cv-heading)' }}>{h.title}</div>
+                    <div className="text-[12px] leading-relaxed" style={{ color: 'var(--cv-muted)' }}>{h.desc}</div>
+                  </div>
                 </div>
-              </div>
-            ))}
+              )
+            })}
           </div>
 
         </div>
