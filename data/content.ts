@@ -60,10 +60,10 @@ export const content = {
           desc: 'Desarrollo de productos propios y para clientes: SaaS multi-tenant, plataforma WhatsApp con IA, y landings con integración de IA.',
           tags: ['TypeScript', 'Next.js', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'WhatsApp Business API', 'OpenAI API', 'Firebase'],
           highlights: [
-            'Smart Class (TypeScript · Next.js 16 · React Native/Expo · Supabase RLS · Turborepo): SaaS multi-tenant para gimnasios con reservas, créditos y lista de espera. RPCs Postgres (book_class, promote_waitlist_for_instance) garantizan atomicidad; Supabase Realtime → toasts en React Native para promociones.',
-            'MR Chatty (TypeScript · Node.js/Express · PostgreSQL/Prisma · WhatsApp Business API · OpenAI API): plataforma multi-tenant de inbox WhatsApp con agente GPT-4o-mini configurable por empresa (system prompt + PDFs + few-shot), JWT+RBAC de dos niveles y webhook HMAC verificado.',
-            'QUIADSA (Next.js 16 · TypeScript · OpenAI API · Firebase): asistente de chat con RAG sobre catálogo industrial + motor de recomendación rule-based con árbol de decisión, sin dependencias externas.',
-            'Efigueiras (React 19 · TypeScript · Vite · Tailwind · Firebase): landing SPA con Framer Motion scroll-reveal, design system shadcn/ui y conversión directa vía WhatsApp Business API.',
+            'Desarrollé Smart Class: SaaS multi-tenant para gimnasios con reservas, créditos y lista de espera; transacciones atómicas y notificaciones en tiempo real en la app móvil.',
+            'Construí MR Chatty: plataforma multi-tenant de inbox WhatsApp con agente de IA configurable por empresa y handoff humano.',
+            'Implementé asistente de chat con IA para QUIADSA: RAG sobre catálogo industrial y motor de recomendación por árbol de decisión.',
+            'Desarrollé landing para Efigueiras: SPA animada con diseño custom y conversión directa vía WhatsApp.',
           ],
         },
         {
@@ -73,9 +73,9 @@ export const content = {
           desc: 'Dos productos para Sonder (hospitality): Moorea Agents — plataforma multi-agente de soporte al huésped — y Moorea Dashboard — panel interno de ops para el equipo de Sonder.',
           tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird'],
           highlights: [
-            'Moorea Agents (Python · FastAPI · OpenAI Agents SDK · LangSmith): TriageAgent delega a 4 sub-agentes especializados (ConsumableAgent, FAQAgent, PaymentAgent, ECILCOAgent) vía Agents-as-Tools; agentes con output tipado Pydantic y registro automático via @register_agent; MCP servers (Booking, Dispatch, Weather) conectados vía SSE con retry exponencial.',
-            'QA Pipeline (Python · GitHub Actions · LangSmith · Snowflake): ConversationGraderAgent evalúa traces de producción en cron horario con métricas response_accuracy, escalation_appropriateness, sentiment, hallucinations y guardrail_failures — resultados persistidos en Snowflake.',
-            'Moorea Dashboard (Next.js 15 · TypeScript · Sendbird · Prisma · PostgreSQL): chats en tiempo real con Sendbird UIKit, visualización de métricas con Nivo charts y panel de estado de agentes IA para el equipo de operaciones.',
+            'Construí sistema multi-agente con agente orquestador que enruta conversaciones de huéspedes a 4 sub-agentes especializados (amenities, FAQ, pagos y operaciones) integrados con APIs internas.',
+            'Implementé pipeline de QA automático: evaluación continua de respuestas del bot en producción con métricas de precisión, escalaciones, alucinaciones y fallas de guardrails.',
+            'Desarrollé dashboard interno de operaciones: chats en tiempo real, métricas de interacción y panel de estado del sistema de agentes para el equipo de operaciones.',
           ],
         },
         {
@@ -85,9 +85,9 @@ export const content = {
           desc: 'Lideré equipo en desarrollo de herramientas AI. Integré ML APIs para image/video recognition, speech-to-text y text analysis. Aseguré best practices en calidad de código, DevOps y CI/CD.',
           tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'CI/CD'],
           highlights: [
-            'Lideré equipo de desarrollo en herramientas AI-driven con stack Python, Go y JS.',
-            'Integré ML APIs externas para reconocimiento de imagen/video, speech-to-text y análisis de texto.',
-            'Gestioné entrega de proyectos y relación con clientes; implementé pipelines CI/CD y estándares de calidad.',
+            'Lideré equipo de desarrollo de herramientas AI: arquitectura de soluciones, code reviews y definición de estándares de calidad.',
+            'Integré ML APIs externas para reconocimiento de imagen/video, speech-to-text y análisis de texto en productos de clientes.',
+            'Gestioné relación con clientes y entrega de proyectos; implementé pipelines CI/CD y procesos de DevOps.'
           ],
         },
         {
@@ -97,9 +97,9 @@ export const content = {
           desc: 'Suite de herramientas para trading algorítmico e inversión: dashboard de fondos, motor de backtesting, servicio de alertas técnicas y API de datos de mercado.',
           tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase Auth', 'pandas', 'Telegram Bot API'],
           highlights: [
-            'MR Capitals Dashboard (Next.js · FastAPI · PostgreSQL · Firebase Auth · Docker Compose): dashboard fullstack para gestión de fondos de inversión con autenticación Firebase JWT server-side, motor de NAV con conversión depósito→cuotas y comisiones dinámicas sobre ganancias.',
-            'MR Capitals Suite — backtesting (Python · FastAPI · pandas · PostgreSQL): motor candle-by-candle con parameter sweeps sobre estrategias EMA/Chandelier Exit; métricas return %, win rate, max drawdown y trade log en JSON.',
-            'Alerts service (Python · PostgreSQL · Telegram Bot API): two-pass evaluation (price pass + candle-pattern) con integración HTTP al ohlc_handler para actualizaciones on-demand; OHLC API con 7 indicadores técnicos en 5 timeframes dockerizada con Docker Compose.',
+            'Diseñé MR Capitals Dashboard: gestión de fondos de inversión con motor de NAV, conversión depósito→cuotas y comisiones dinámicas sobre ganancias.',
+            'Construí motor de backtesting candle-by-candle con simulación de estrategias y métricas de return %, win rate y max drawdown.',
+            'Desarrollé servicio de alertas técnicas con evaluación en dos pasos (precio + patrón de vela) y API de indicadores técnicos propia.',
           ],
         },
         {
@@ -109,9 +109,9 @@ export const content = {
           desc: 'Consultoría técnica y funcional ERP para múltiples clientes. Implementación de software, capacitación y automatización de procesos de negocio.',
           tags: ['ERP', 'SQL', 'Python', 'Automatización'],
           highlights: [
-            'Lideré proyectos de consultoría externa e implementación ERP para múltiples clientes simultáneos.',
-            'Desarrollé scripts y bots en Python para automatización de tareas y flujos de trabajo.',
-            'Capacitación de equipos y optimización de procesos de negocio.',
+            'Lideré implementación ERP para múltiples clientes simultáneos: gestión de proyecto, relevamiento de requerimientos y configuración de módulos.',
+            'Desarrollé scripts y bots en Python para automatización de tareas y flujos de trabajo internos.',
+            'Capacité equipos de usuarios y optimicé procesos de negocio mediante análisis funcional y mejoras operativas.'
           ],
         },
       ],
@@ -308,10 +308,10 @@ export const content = {
           desc: 'Building products for clients and own ventures: multi-tenant SaaS, AI-powered WhatsApp platform, and AI-integrated landing pages.',
           tags: ['TypeScript', 'Next.js', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'WhatsApp Business API', 'OpenAI API', 'Firebase'],
           highlights: [
-            'Smart Class (TypeScript · Next.js 16 · React Native/Expo · Supabase RLS · Turborepo): multi-tenant SaaS for gyms with bookings, credits, and waitlists. Postgres RPCs (book_class, promote_waitlist_for_instance) guarantee atomicity; Supabase Realtime → React Native toasts for waitlist promotions.',
-            'MR Chatty (TypeScript · Node.js/Express · PostgreSQL/Prisma · WhatsApp Business API · OpenAI API): multi-tenant shared WhatsApp inbox with configurable GPT-4o-mini agent per company (system prompt + PDFs + few-shot), JWT+RBAC two-level auth, and HMAC-verified webhook.',
-            'QUIADSA (Next.js 16 · TypeScript · OpenAI API · Firebase): AI chat assistant with RAG over industrial product catalog + rule-based recommendation engine with decision tree, no external dependencies.',
-            'Efigueiras (React 19 · TypeScript · Vite · Tailwind · Firebase): SPA landing with Framer Motion scroll-reveal, shadcn/ui design system, and direct WhatsApp Business conversion.',
+            'Built Smart Class: multi-tenant SaaS for gyms with bookings, credits, and waitlists; atomic transactions and real-time notifications in the mobile app.',
+            'Built MR Chatty: multi-tenant shared WhatsApp inbox with a configurable AI agent per company and human handoff.',
+            'Built AI chat assistant for QUIADSA: RAG over an industrial product catalog and rule-based recommendation engine with decision tree.',
+            'Developed landing page for Efigueiras: animated SPA with custom design and direct WhatsApp conversion.',
           ],
         },
         {
@@ -321,9 +321,9 @@ export const content = {
           desc: 'Two products for Sonder (hospitality): Moorea Agents — multi-agent guest support platform — and Moorea Dashboard — internal ops panel for the Sonder team.',
           tags: ['Python', 'FastAPI', 'OpenAI Agents SDK', 'LangSmith', 'Snowflake', 'Next.js 15', 'TypeScript', 'Prisma', 'PostgreSQL', 'Sendbird'],
           highlights: [
-            'Moorea Agents (Python · FastAPI · OpenAI Agents SDK · LangSmith): TriageAgent delegates to 4 specialized sub-agents (ConsumableAgent, FAQAgent, PaymentAgent, ECILCOAgent) via Agents-as-Tools; Pydantic-typed outputs and automatic registration via @register_agent; MCP servers (Booking, Dispatch, Weather) over SSE with exponential retry.',
-            'QA Pipeline (Python · GitHub Actions · LangSmith · Snowflake): ConversationGraderAgent evaluates production traces on an hourly cron with response_accuracy, escalation_appropriateness, sentiment, hallucinations, and guardrail_failures — persisted in Snowflake.',
-            'Moorea Dashboard (Next.js 15 · TypeScript · Sendbird · Prisma · PostgreSQL): real-time guest chats via Sendbird UIKit, interaction metrics with Nivo charts, and AI agent status panel for the ops team.',
+            'Built multi-agent system with an orchestrator agent that routes guest conversations to 4 specialized sub-agents (amenities, FAQ, payments, and operations) integrated with internal APIs.',
+            'Implemented automated QA pipeline: continuous evaluation of bot responses in production tracking accuracy, escalations, hallucinations, and guardrail failures.',
+            'Developed internal ops dashboard: real-time guest chats, interaction metrics with charts, and agent system status panel for the operations team.',
           ],
         },
         {
@@ -333,9 +333,9 @@ export const content = {
           desc: 'Led AI tooling team. Integrated ML APIs for image/video recognition, speech-to-text, and text analysis. Ensured best practices in code quality, DevOps, and CI/CD.',
           tags: ['Python', 'Go', 'JavaScript', 'ML APIs', 'CI/CD'],
           highlights: [
-            'Led development team on AI-driven tooling with Python, Go, and JS stack.',
-            'Integrated external ML APIs for image/video recognition, speech-to-text, and text analysis.',
-            'Managed project delivery and client relations; implemented CI/CD pipelines and quality standards.',
+            'Led AI tooling development team: solution architecture, code reviews, and engineering standards.',
+            'Integrated external ML APIs for image/video recognition, speech-to-text, and text analysis across client products.',
+            'Managed client relations and project delivery; implemented CI/CD pipelines and DevOps best practices.'
           ],
         },
         {
@@ -345,9 +345,9 @@ export const content = {
           desc: 'Algorithmic trading suite and investment tools: fund management dashboard, backtesting engine, technical alerts service, and market data API.',
           tags: ['Python', 'FastAPI', 'PostgreSQL', 'Binance API', 'Docker', 'Next.js', 'Firebase Auth', 'pandas', 'Telegram Bot API'],
           highlights: [
-            'MR Capitals Dashboard (Next.js · FastAPI · PostgreSQL · Firebase Auth · Docker Compose): full-stack fund management dashboard with server-side Firebase JWT auth, NAV engine with deposit→shares conversion, and dynamic profit-based commissions.',
-            'MR Capitals Suite — backtesting engine (Python · FastAPI · pandas · PostgreSQL): candle-by-candle simulation with parameter sweeps over EMA/Chandelier Exit strategies; outputs return %, win rate, max drawdown, and full trade log in JSON.',
-            'Alerts service (Python · PostgreSQL · Telegram Bot API): two-pass evaluation (price pass + candle-pattern) with on-demand HTTP calls to the OHLC API; OHLC service with 7 technical indicators across 5 timeframes, Dockerized with Docker Compose.',
+            'Designed MR Capitals Dashboard: fund management platform with a NAV engine, deposit→shares conversion, and dynamic profit-based commissions.',
+            'Built candle-by-candle backtesting engine: strategy simulation with parameter sweeps and metrics for return %, win rate, and max drawdown.',
+            'Developed technical alerts service: two-pass evaluation (price + candle pattern) with an in-house technical indicators API.',
           ],
         },
         {
@@ -357,9 +357,9 @@ export const content = {
           desc: 'Technical and functional ERP consulting for multiple clients. Implementation, training, and business process automation.',
           tags: ['ERP', 'SQL', 'Python', 'Automation'],
           highlights: [
-            'Led external consulting projects and ERP implementation for multiple simultaneous clients.',
-            'Developed Python scripts and bots for task automation and workflow optimization.',
-            'Team training and business process optimization.',
+            'Led ERP implementation for multiple simultaneous clients: project management, requirements gathering, and module configuration.',
+            'Developed Python scripts and bots for internal task automation and workflow optimization.',
+            'Trained end-user teams and optimized business processes through functional analysis and operational improvements.'
           ],
         },
       ],
