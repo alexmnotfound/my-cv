@@ -35,8 +35,8 @@ function ProjectModal({ item, onClose }: { item: AccordionItemData; onClose: () 
           )}
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full text-[16px] transition-opacity hover:opacity-60"
-            style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)', color: 'var(--cv-muted)' }}
+            className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full text-[16px] font-bold transition-opacity hover:opacity-80"
+            style={{ background: 'rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', backdropFilter: 'blur(4px)' }}
           >
             ×
           </button>

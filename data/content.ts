@@ -63,9 +63,9 @@ export const content = {
           tags: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'Prisma', 'WhatsApp Business API', 'OpenAI API', 'Claude API', 'Firebase'],
           highlights: [
             'Desarrollé Smart Class: SaaS multi-tenant para gimnasios con reservas, créditos y lista de espera; transacciones atómicas y notificaciones en tiempo real en la app móvil.',
-            'Construí MR Chatty: plataforma multi-tenant de inbox WhatsApp con agente de IA configurable por empresa y handoff humano.',
+            'Construí WhatsApp Chatbots: plataforma multi-tenant de inbox WhatsApp con agente de IA configurable por empresa y handoff humano.',
             'Implementé asistente de chat con IA para QUIADSA: RAG sobre catálogo industrial y motor de recomendación por árbol de decisión.',
-            'Desarrollé landing para Efigueiras: SPA animada con diseño custom y conversión directa vía WhatsApp.',
+            'Desarrollé landing para EFIGUEIRAS: SPA animada con diseño custom y conversión directa vía WhatsApp.',
           ],
         },
         {
@@ -206,6 +206,20 @@ export const content = {
           imageUrl: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80',
         },
         {
+          id: 'smartclass',
+          tag: 'SaaS · Mobile · Fullstack',
+          title: 'Smart Class',
+          company: 'Freelance',
+          subtitle: 'TypeScript · Next.js 16 · React Native / Expo · Supabase · Turborepo',
+          description: 'Plataforma para gimnasios y estudios de pilates: reservas de clases, gestión de créditos, lista de espera y app móvil para los alumnos.',
+          highlights: [
+            'Cada empresa tiene sus datos completamente aislados — múltiples negocios usan la misma plataforma sin que sus datos se mezclen.',
+            'Las reservas son transaccionales: si hay créditos disponibles se confirma, si está lleno entra a lista de espera, y al liberarse un lugar se promueve automáticamente.',
+            'App web para admins y app móvil para alumnos, con notificaciones en tiempo real cuando su lugar en lista de espera se confirma.',
+          ],
+          imageUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
+        },
+        {
           id: 'capitals',
           tag: 'FinTech · Trading',
           title: 'Herramientas de Trading',
@@ -222,17 +236,17 @@ export const content = {
         {
           id: 'landings',
           tag: 'Frontend · IA · Freelance',
-          title: 'Proyectos Web',
+          title: 'Web',
           company: 'Freelance',
           subtitle: 'React · Next.js · TypeScript · Tailwind CSS · Firebase',
           description: 'Sitios web y MVPs freelance con foco en conversión y diseño. Desde landings animadas hasta asistentes con IA integrada.',
           highlights: [
             'QUIADSA: asistente de chat con IA que ayuda a clientes a encontrar el producto industrial correcto según su aplicación, usando búsqueda semántica sobre el catálogo.',
-            'Efigueiras: landing para coach ontológica con animaciones por scroll, diseño custom y botón de contacto directo por WhatsApp.',
+            'EFIGUEIRAS: landing para coach ontológica con animaciones por scroll, diseño custom y botón de contacto directo por WhatsApp.',
             'Stack moderno en todos los proyectos: React / Next.js, TypeScript, Tailwind CSS, deploy en Firebase Hosting.',
           ],
           links: [
-            { label: 'Efigueiras', url: 'https://efigueiras-coach.web.app/' },
+            { label: 'EFIGUEIRAS', url: 'https://efigueiras-coach.web.app/' },
             { label: 'QUIADSA MVP', url: 'https://mvp-quiadsa.web.app/' },
           ],
           imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
@@ -317,9 +331,9 @@ export const content = {
           tags: ['TypeScript', 'Next.js', 'React', 'Tailwind CSS', 'React Native', 'Expo', 'Supabase', 'Turborepo', 'Node.js', 'PostgreSQL', 'Prisma', 'WhatsApp Business API', 'OpenAI API', 'Claude API', 'Firebase'],
           highlights: [
             'Built Smart Class: multi-tenant SaaS for gyms with bookings, credits, and waitlists; atomic transactions and real-time notifications in the mobile app.',
-            'Built MR Chatty: multi-tenant shared WhatsApp inbox with a configurable AI agent per company and human handoff.',
+            'Built WhatsApp Chatbots: multi-tenant shared WhatsApp inbox with a configurable AI agent per company and human handoff.',
             'Built AI chat assistant for QUIADSA: RAG over an industrial product catalog and rule-based recommendation engine with decision tree.',
-            'Developed landing page for Efigueiras: animated SPA with custom design and direct WhatsApp conversion.',
+            'Developed landing page for EFIGUEIRAS: animated SPA with custom design and direct WhatsApp conversion.',
           ],
         },
         {
@@ -460,6 +474,20 @@ export const content = {
           imageUrl: 'https://images.unsplash.com/photo-1611746872915-64382b5c76da?w=800&q=80',
         },
         {
+          id: 'smartclass',
+          tag: 'SaaS · Mobile · Fullstack',
+          title: 'Smart Class',
+          company: 'Freelance',
+          subtitle: 'TypeScript · Next.js 16 · React Native / Expo · Supabase · Turborepo',
+          description: 'Platform for gyms and Pilates studios: class bookings, credit management, waitlists, and a mobile app for members.',
+          highlights: [
+            'Each business has fully isolated data — multiple companies share the same platform without their data ever mixing.',
+            'Bookings are transactional: confirms if credits are available, adds to waitlist if full, and automatically promotes the next person when a spot opens.',
+            'Web app for admins and mobile app for members, with real-time notifications when a waitlist spot is confirmed.',
+          ],
+          imageUrl: 'https://images.unsplash.com/photo-1534438327276-14e5300c3a48?w=800&q=80',
+        },
+        {
           id: 'capitals',
           tag: 'FinTech · Trading',
           title: 'Trading Tools',
@@ -476,17 +504,17 @@ export const content = {
         {
           id: 'landings',
           tag: 'Frontend · AI · Freelance',
-          title: 'Web Projects',
+          title: 'Web',
           company: 'Freelance',
           subtitle: 'React · Next.js · TypeScript · Tailwind CSS · Firebase',
           description: 'Freelance websites and MVPs focused on conversion and design — from animated landing pages to AI-powered assistants.',
           highlights: [
             'QUIADSA: AI chat assistant that helps customers find the right industrial product for their application, using semantic search over the product catalog.',
-            'Efigueiras: landing page for an ontological coach with scroll animations, custom design, and direct WhatsApp contact.',
+            'EFIGUEIRAS: landing page for an ontological coach with scroll animations, custom design, and direct WhatsApp contact.',
             'Modern stack across all projects: React / Next.js, TypeScript, Tailwind CSS, deployed on Firebase Hosting.',
           ],
           links: [
-            { label: 'Efigueiras', url: 'https://efigueiras-coach.web.app/' },
+            { label: 'EFIGUEIRAS', url: 'https://efigueiras-coach.web.app/' },
             { label: 'QUIADSA MVP', url: 'https://mvp-quiadsa.web.app/' },
           ],
           imageUrl: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80',
