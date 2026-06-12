@@ -1,9 +1,10 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Caveat } from 'next/font/google'
 import Providers from '@/components/Providers'
 import './globals.css'
 
 const inter = Inter({ subsets: ['latin'], variable: '--font-sans' })
+const caveat = Caveat({ subsets: ['latin'], weight: '500', variable: '--font-hand' })
 
 export const metadata: Metadata = {
   title: 'Matías Rodríguez — AI Engineer & Technical Lead',
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="es" suppressHydrationWarning className={inter.variable}>
+    <html lang="es" suppressHydrationWarning className={`${inter.variable} ${caveat.variable}`}>
       <body className="min-h-screen antialiased" suppressHydrationWarning>
         <Providers>
           {children}

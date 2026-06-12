@@ -192,3 +192,16 @@ body {
   from { transform: translateX(-50%); }
   to { transform: translateX(0); }
 }
+
+/* Hero hints — hand-drawn arrows */
+@keyframes hint-draw {
+  to { stroke-dashoffset: 0; }
+}
+@keyframes hint-appear {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+@keyframes hint-bob {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}

@@ -22,6 +22,8 @@ export const content = {
       stat_go: 'años AI',
       stat_exp: 'años exp.',
       stat_langs: 'idiomas',
+      hint_controls: 'idioma · tema · layout',
+      hint_scroll: 'deslizá',
       langs_data: [
         { name: 'Español', level: 'Nativo', pct: 100 },
         { name: 'Inglés', level: 'Avanzado (C1)', pct: 85 },
@@ -273,6 +275,8 @@ export const content = {
       stat_go: 'yrs AI',
       stat_exp: 'yrs exp.',
       stat_langs: 'languages',
+      hint_controls: 'language · theme · layout',
+      hint_scroll: 'scroll',
       langs_data: [
         { name: 'Spanish', level: 'Native', pct: 100 },
         { name: 'English', level: 'Advanced (C1)', pct: 85 },

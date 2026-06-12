@@ -3,6 +3,7 @@
 import Image from 'next/image'
 import { useState } from 'react'
 import { useLang } from '@/context/LanguageContext'
+import HeroHints from '@/components/HeroHints'
 
 export default function Hero() {
   const { t } = useLang()
@@ -37,6 +38,8 @@ export default function Hero() {
       />
 
       <div className="relative z-10 mx-auto max-w-[1080px] w-full flex items-stretch justify-between gap-16 flex-wrap py-20">
+
+        <HeroHints />
 
         {/* Left */}
         <div className="flex-1 min-w-[280px]">
