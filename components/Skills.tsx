@@ -159,8 +159,13 @@ export default function Skills() {
               />
             </svg>
             <span
-              className="text-[18px] -rotate-2"
-              style={{ fontFamily: 'var(--font-hand)', color: 'var(--cv-heading)' }}
+              className="text-[18px] -rotate-2 whitespace-nowrap overflow-hidden"
+              style={{
+                fontFamily: 'var(--font-hand)',
+                color: 'var(--cv-heading)',
+                clipPath: hintVisible ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
+                transition: 'clip-path 0.7s ease-out 1.5s',
+              }}
             >
               {s.hint_filter}
             </span>

@@ -2,6 +2,7 @@
 
 import { Mail, MessageCircle, GitBranch, Link } from 'lucide-react'
 import { useLang } from '@/context/LanguageContext'
+import DigitalSignature from '@/components/DigitalSignature'
 
 const LINKS = [
   { Icon: Mail,          href: 'mailto:rodriguez.ma@protonmail.com',       name: 'Email',     handle: 'rodriguez.ma@protonmail.com' },
@@ -29,6 +30,7 @@ export default function Contact() {
             <h2 className="text-[36px] font-black leading-tight tracking-tight" style={{ color: 'var(--cv-heading)' }}>
               {c.heading}
             </h2>
+            <DigitalSignature />
           </div>
 
           {/* Right — contact links */}
