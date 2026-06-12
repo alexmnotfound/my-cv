@@ -1,5 +1,6 @@
 'use client'
 
+import { useEffect, useRef, useState } from 'react'
 import { useLang } from '@/context/LanguageContext'
 import { useSkillFilter } from '@/context/SkillFilterContext'
 
@@ -39,6 +40,34 @@ export default function Skills() {
   const { t } = useLang()
   const s = t.skills
   const { activeFilter, setActiveFilter } = useSkillFilter()
+
+  // hint arrow draws itself when the filter row scrolls into view
+  const hintRef = useRef<HTMLDivElement>(null)
+  const [hintVisible, setHintVisible] = useState(false)
+  useEffect(() => {
+    const el = hintRef.current
+    if (!el) return
+    const obs = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setHintVisible(true)
+          obs.unobserve(el)
+        }
+      },
+      { threshold: 0.5 }
+    )
+    obs.observe(el)
+    return () => obs.disconnect()
+  }, [])
+
+  const hintStroke = {
+    fill: 'none',
+    stroke: 'var(--cv-heading)',
+    strokeWidth: 1.6,
+    strokeLinecap: 'round' as const,
+    strokeLinejoin: 'round' as const,
+    strokeDasharray: 1,
+  }
 
   const mid = Math.ceil(s.items.length / 2)
   const row1Items = s.items.slice(0, mid)
@@ -101,6 +130,41 @@ export default function Skills() {
               {f.label}
             </button>
           ))}
+
+          {/* hand-drawn hint — arrow pointing left at the filter chips */}
+          <div
+            ref={hintRef}
+            className="pointer-events-none hidden md:flex items-center gap-2 ml-3 -mt-1"
+            style={{ opacity: hintVisible ? 1 : 0, transition: 'opacity 0.6s ease 0.3s' }}
+            aria-hidden="true"
+          >
+            <svg width="54" height="26" viewBox="0 0 54 26">
+              <path
+                d="M50 10 C 36 18, 22 8, 8 14"
+                pathLength={1}
+                style={{
+                  ...hintStroke,
+                  strokeDashoffset: hintVisible ? 0 : 1,
+                  transition: 'stroke-dashoffset 0.8s ease-out 0.5s',
+                }}
+              />
+              <path
+                d="M16 7 C 13 9, 10 12, 7 14 C 10 15, 14 17, 17 20"
+                pathLength={1}
+                style={{
+                  ...hintStroke,
+                  strokeDashoffset: hintVisible ? 0 : 1,
+                  transition: 'stroke-dashoffset 0.35s ease-out 1.3s',
+                }}
+              />
+            </svg>
+            <span
+              className="text-[18px] -rotate-2"
+              style={{ fontFamily: 'var(--font-hand)', color: 'var(--cv-heading)' }}
+            >
+              {s.hint_filter}
+            </span>
+          </div>
         </div>
 
         {/* Carousel — "All" selected */}
