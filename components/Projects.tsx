@@ -1,28 +1,30 @@
 'use client'
 
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import Image from 'next/image'
 import { useLang } from '@/context/LanguageContext'
 import { LandingAccordionItem, AccordionItemData } from '@/components/ui/interactive-image-accordion'
 
 function ProjectModal({ item, onClose }: { item: AccordionItemData; onClose: () => void }) {
-  return (
+  return createPortal(
     <div
       className="fixed inset-0 z-[100] flex items-center justify-center p-4"
       onClick={onClose}
       style={{ animation: 'modal-backdrop-in 0.25s ease forwards' }}
     >
       <div
-        className="relative w-full max-w-[560px] rounded-2xl overflow-hidden"
+        className="relative w-full max-w-[560px] rounded-2xl overflow-hidden flex flex-col"
         onClick={e => e.stopPropagation()}
         style={{
           background: 'var(--cv-bg)',
           border: '1px solid var(--cv-border)',
           boxShadow: '0 30px 70px rgba(0,0,0,0.25)',
           animation: 'modal-scale-in 0.3s cubic-bezier(0.34, 1.56, 0.64, 1) forwards',
+          maxHeight: '90vh',
         }}
       >
-        <div className="relative h-44 w-full overflow-hidden">
+        <div className="relative h-44 w-full flex-shrink-0 overflow-hidden">
           <Image src={item.imageUrl} alt={item.title} fill className="object-cover" />
           <div className="absolute inset-0" style={{ background: 'linear-gradient(to bottom, transparent 40%, var(--cv-bg))' }} />
           {item.tag && (
@@ -35,14 +37,15 @@ function ProjectModal({ item, onClose }: { item: AccordionItemData; onClose: () 
           )}
           <button
             onClick={onClose}
-            className="absolute top-3 right-3 flex h-7 w-7 items-center justify-center rounded-full text-[16px] font-bold transition-opacity hover:opacity-80"
-            style={{ background: 'rgba(0,0,0,0.55)', border: '1px solid rgba(255,255,255,0.25)', color: '#fff', backdropFilter: 'blur(4px)' }}
+            className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full text-[18px] font-bold transition-opacity hover:opacity-90"
+            style={{ background: 'rgba(0,0,0,0.75)', border: '1.5px solid rgba(255,255,255,0.5)', color: '#fff' }}
+            aria-label="Cerrar"
           >
             ×
           </button>
         </div>
 
-        <div className="p-6">
+        <div className="overflow-y-auto p-6" style={{ minHeight: '200px' }}>
           <div className="mb-1 flex items-baseline gap-2">
             <h3 className="text-[18px] font-bold" style={{ color: 'var(--cv-heading)' }}>{item.title}</h3>
             {item.company && <span className="text-[11px]" style={{ color: 'var(--cv-muted)' }}>{item.company}</span>}
@@ -83,7 +86,8 @@ function ProjectModal({ item, onClose }: { item: AccordionItemData; onClose: () 
           )}
         </div>
       </div>
-    </div>
+    </div>,
+    document.body
   )
 }
 

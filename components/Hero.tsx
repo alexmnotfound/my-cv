@@ -2,6 +2,7 @@
 
 import Image from 'next/image'
 import { useState } from 'react'
+import { createPortal } from 'react-dom'
 import { useLang } from '@/context/LanguageContext'
 import HeroHints from '@/components/HeroHints'
 
@@ -142,8 +143,8 @@ export default function Hero() {
       </div>
     </section>
 
-    {/* Languages modal — outside section to escape backdropFilter stacking context */}
-    {langsOpen && (
+    {/* Languages modal */}
+    {langsOpen && createPortal(
       <div
         className="fixed inset-0 z-[100] flex items-center justify-center"
         onClick={() => setLangsOpen(false)}
@@ -161,8 +162,9 @@ export default function Hero() {
         >
           <button
             onClick={() => setLangsOpen(false)}
-            className="absolute top-4 right-4 text-[18px] leading-none transition-opacity hover:opacity-60"
-            style={{ color: 'var(--cv-muted)' }}
+            className="absolute top-3 right-3 flex h-8 w-8 items-center justify-center rounded-full text-[18px] font-bold transition-opacity hover:opacity-90"
+            style={{ background: 'rgba(0,0,0,0.75)', border: '1.5px solid rgba(255,255,255,0.5)', color: '#fff' }}
+            aria-label="Cerrar"
           >
             ×
           </button>
@@ -191,9 +193,9 @@ export default function Hero() {
           </div>
         </div>
       </div>
-    )}
+    , document.body)}
 
-    {photoOpen && (
+    {photoOpen && createPortal(
       <div
         className="fixed inset-0 z-[100] flex items-center justify-center"
         onClick={() => setPhotoOpen(false)}
@@ -211,7 +213,7 @@ export default function Hero() {
           <Image src="/profile.png" alt="Matías Rodríguez" width={320} height={320} className="w-full h-auto object-cover block" />
         </div>
       </div>
-    )}
+    , document.body)}
     </>
   )
 }

@@ -38,7 +38,7 @@ export default function HeroHints() {
     <>
       {/* Sidebar hint — visible only in sidebar mode, points upper-left at sidebar layout toggle */}
       <div
-        className={`pointer-events-none absolute -top-7 left-[20px] z-10 items-end gap-2.5 flex-row-reverse ${navMode === 'sidebar' ? 'hidden md:flex' : 'hidden'}`}
+        className={`pointer-events-none absolute -top-7 left-[20px] z-10 items-center gap-2.5 flex-row-reverse ${navMode === 'sidebar' ? 'hidden md:flex' : 'hidden'}`}
         aria-hidden="true"
       >
         <span
@@ -47,9 +47,9 @@ export default function HeroHints() {
         >
           {h.hint_layout}
         </span>
-        <svg width="26" height="58" viewBox="0 0 26 58">
+        <svg width="58" height="26" viewBox="0 0 58 26">
           <path
-            d="M16 54 C 11 40, 14 22, 9 6"
+            d="M54 16 C 38 18, 22 14, 6 13"
             pathLength={1}
             style={{
               ...stroke,
@@ -59,7 +59,7 @@ export default function HeroHints() {
             }}
           />
           <path
-            d="M2 14 C 5 11, 7 8, 9 5 C 10 9, 12 13, 15 16"
+            d="M14 5 C 11 8, 8 11, 6 13 C 10 14, 13 17, 16 20"
             pathLength={1}
             style={{
               ...stroke,
