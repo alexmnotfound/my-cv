@@ -2,10 +2,12 @@
 
 import { useEffect, useState } from 'react'
 import { useLang } from '@/context/LanguageContext'
+import { useNavMode } from '@/context/NavModeContext'
 
 export default function HeroHints() {
   const { t } = useLang()
   const h = t.hero
+  const { navMode } = useNavMode()
 
   // text reveals after the arrow finishes drawing
   const [controlsText, setControlsText] = useState(false)
@@ -34,9 +36,44 @@ export default function HeroHints() {
 
   return (
     <>
-      {/* Controls hint — sits above the photo card, arrow pointing up at nav controls. Desktop only. */}
+      {/* Sidebar hint — visible only in sidebar mode, points upper-left at sidebar layout toggle */}
       <div
-        className="pointer-events-none absolute -top-7 right-[70px] z-10 hidden md:flex items-end gap-2.5"
+        className={`pointer-events-none absolute -top-7 left-[20px] z-10 items-end gap-2.5 flex-row-reverse ${navMode === 'sidebar' ? 'hidden md:flex' : 'hidden'}`}
+        aria-hidden="true"
+      >
+        <span
+          className="text-[19px] leading-tight max-w-[170px] -rotate-2 -translate-y-1 whitespace-nowrap overflow-hidden"
+          style={writeStyle(controlsText)}
+        >
+          {h.hint_layout}
+        </span>
+        <svg width="26" height="58" viewBox="0 0 26 58">
+          <path
+            d="M16 54 C 11 40, 14 22, 9 6"
+            pathLength={1}
+            style={{
+              ...stroke,
+              strokeDasharray: 1,
+              strokeDashoffset: 1,
+              animation: 'hint-draw 0.9s ease-out 1.9s forwards',
+            }}
+          />
+          <path
+            d="M2 14 C 5 11, 7 8, 9 5 C 10 9, 12 13, 15 16"
+            pathLength={1}
+            style={{
+              ...stroke,
+              strokeDasharray: 1,
+              strokeDashoffset: 1,
+              animation: 'hint-draw 0.35s ease-out 2.7s forwards',
+            }}
+          />
+        </svg>
+      </div>
+
+      {/* Controls hint — top nav only, hidden in sidebar mode. Desktop only. */}
+      <div
+        className={`pointer-events-none absolute -top-7 right-[70px] z-10 items-end gap-2.5 ${navMode === 'sidebar' ? 'hidden' : 'hidden md:flex'}`}
         aria-hidden="true"
       >
         <span

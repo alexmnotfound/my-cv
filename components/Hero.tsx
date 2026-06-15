@@ -15,27 +15,29 @@ export default function Hero() {
     <>
     <section
       id="home"
-      className="relative min-h-[88vh] flex items-center justify-center overflow-hidden px-8 border-b"
+      className="relative min-h-[88vh] flex items-center justify-center px-8 border-b"
       style={{ borderColor: 'var(--cv-border)' }}
     >
-      {/* Orbs */}
-      <div
-        className="pointer-events-none absolute -top-24 -right-24 h-[500px] w-[500px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(148,163,184,0.07) 0%, transparent 70%)', filter: 'blur(80px)' }}
-      />
-      <div
-        className="pointer-events-none absolute -bottom-20 -left-20 h-[350px] w-[350px] rounded-full"
-        style={{ background: 'radial-gradient(circle, rgba(100,116,139,0.05) 0%, transparent 70%)', filter: 'blur(80px)' }}
-      />
-
-      {/* Grid background */}
-      <div
-        className="pointer-events-none absolute inset-0"
-        style={{
-          backgroundImage: 'linear-gradient(var(--cv-border) 1px, transparent 1px), linear-gradient(90deg, var(--cv-border) 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-        }}
-      />
+      {/* Decorations — overflow-hidden here so orbs/grid clip but hints don't */}
+      <div className="pointer-events-none absolute inset-0 overflow-hidden">
+        {/* Orbs */}
+        <div
+          className="absolute -top-24 -right-24 h-[500px] w-[500px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(148,163,184,0.07) 0%, transparent 70%)', filter: 'blur(80px)' }}
+        />
+        <div
+          className="absolute -bottom-20 -left-20 h-[350px] w-[350px] rounded-full"
+          style={{ background: 'radial-gradient(circle, rgba(100,116,139,0.05) 0%, transparent 70%)', filter: 'blur(80px)' }}
+        />
+        {/* Grid background */}
+        <div
+          style={{
+            position: 'absolute', inset: 0,
+            backgroundImage: 'linear-gradient(var(--cv-border) 1px, transparent 1px), linear-gradient(90deg, var(--cv-border) 1px, transparent 1px)',
+            backgroundSize: '60px 60px',
+          }}
+        />
+      </div>
 
       <div className="relative z-10 mx-auto max-w-[1080px] w-full flex items-stretch justify-between gap-16 flex-wrap py-20">
 

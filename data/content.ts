@@ -23,6 +23,7 @@ export const content = {
       stat_exp: 'años exp.',
       stat_langs: 'idiomas',
       hint_controls: 'idioma · tema · layout',
+      hint_layout: 'volvé al topbar',
       hint_scroll: 'deslizá',
       langs_data: [
         { name: 'Español', level: 'Nativo', pct: 100 },
@@ -291,6 +292,7 @@ export const content = {
       stat_exp: 'yrs exp.',
       stat_langs: 'languages',
       hint_controls: 'language · theme · layout',
+      hint_layout: 'back to topbar',
       hint_scroll: 'scroll',
       langs_data: [
         { name: 'Spanish', level: 'Native', pct: 100 },
