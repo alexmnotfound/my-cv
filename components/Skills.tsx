@@ -7,11 +7,11 @@ import { useSkillFilter } from '@/context/SkillFilterContext'
 function Badge({ name }: { name: string }) {
   return (
     <span
-      className="inline-flex items-center px-3 py-1.5 rounded-full text-[12px] font-medium whitespace-nowrap"
+      className="inline-flex items-center px-2 py-0.5 rounded text-[10px] whitespace-nowrap"
       style={{
         background: 'var(--cv-surface)',
         border: '1px solid var(--cv-border)',
-        color: 'var(--cv-text)',
+        color: 'var(--cv-muted)',
       }}
     >
       {name}
@@ -107,11 +107,12 @@ export default function Skills() {
         <div className="flex flex-wrap gap-2 mb-8">
           <button
             onClick={() => setActiveFilter(null)}
-            className="px-3 py-1.5 rounded-full text-[11px] font-medium uppercase tracking-wider transition-all"
+            className="rounded text-[11px] px-2.5 py-1 transition-all duration-300"
             style={{
-              background: activeFilter === null ? 'var(--cv-heading)' : 'var(--cv-surface)',
+              background: activeFilter === null ? 'var(--cv-accent)' : 'var(--cv-surface)',
               color: activeFilter === null ? 'var(--cv-bg)' : 'var(--cv-muted)',
-              border: '1px solid var(--cv-border)',
+              border: `1px solid ${activeFilter === null ? 'var(--cv-accent)' : 'var(--cv-border)'}`,
+              fontWeight: activeFilter === null ? 600 : 400,
             }}
           >
             {s.filter_all}
@@ -120,11 +121,12 @@ export default function Skills() {
             <button
               key={f.key}
               onClick={() => setActiveFilter(f.key === activeFilter ? null : f.key)}
-              className="px-3 py-1.5 rounded-full text-[11px] font-medium uppercase tracking-wider transition-all"
+              className="rounded text-[11px] px-2.5 py-1 transition-all duration-300"
               style={{
-                background: activeFilter === f.key ? 'var(--cv-heading)' : 'var(--cv-surface)',
+                background: activeFilter === f.key ? 'var(--cv-accent)' : 'var(--cv-surface)',
                 color: activeFilter === f.key ? 'var(--cv-bg)' : 'var(--cv-muted)',
-                border: '1px solid var(--cv-border)',
+                border: `1px solid ${activeFilter === f.key ? 'var(--cv-accent)' : 'var(--cv-border)'}`,
+                fontWeight: activeFilter === f.key ? 600 : 400,
               }}
             >
               {f.label}
