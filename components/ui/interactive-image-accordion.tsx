@@ -61,7 +61,7 @@ const AccordionItem = ({ item, isActive, onMouseEnter, onClick }: AccordionItemP
         {isActive ? (
           <>
             <p className="text-white font-bold text-lg">{item.title}</p>
-            <p className="mt-1 text-[12px] text-white/60">{item.subtitle}</p>
+            {item.company && <p className="mt-1 text-[12px] text-white/60">{item.company}</p>}
           </>
         ) : (
           <p

@@ -46,11 +46,8 @@ function ProjectModal({ item, onClose }: { item: AccordionItemData; onClose: () 
         </div>
 
         <div className="overflow-y-auto p-6" style={{ minHeight: '200px' }}>
-          <div className="mb-1 flex items-baseline gap-2">
-            <h3 className="text-[18px] font-bold" style={{ color: 'var(--cv-heading)' }}>{item.title}</h3>
-            {item.company && <span className="text-[11px]" style={{ color: 'var(--cv-muted)' }}>{item.company}</span>}
-          </div>
-          <p className="mb-4 text-[10px] uppercase tracking-wider" style={{ color: 'var(--cv-accent)' }}>{item.subtitle}</p>
+          <h3 className="text-[18px] font-bold mb-0.5" style={{ color: 'var(--cv-heading)' }}>{item.title}</h3>
+          {item.company && <p className="mb-4 text-[11px] uppercase tracking-wider" style={{ color: 'var(--cv-accent)' }}>{item.company}</p>}
           {item.description && (
             <p className="mb-5 text-[13px] leading-relaxed" style={{ color: 'var(--cv-muted)' }}>{item.description}</p>
           )}
@@ -102,7 +99,7 @@ export default function Projects() {
     company: item.company,
     subtitle: item.subtitle,
     imageUrl: item.imageUrl,
-    tag: item.tag,
+    tag: ('tag' in item ? item.tag : undefined) as string | undefined,
     description: item.description,
     highlights: item.highlights,
     links: ('links' in item ? item.links : undefined) as AccordionItemData['links'],
