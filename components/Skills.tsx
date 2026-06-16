@@ -19,8 +19,8 @@ function Badge({ name }: { name: string }) {
   )
 }
 
-function MarqueeRow({ items, reverse }: { items: { name: string }[]; reverse?: boolean }) {
-  const doubled = [...items, ...items]
+function MarqueeRow({ items, reverse, repeat = 2 }: { items: { name: string }[]; reverse?: boolean; repeat?: number }) {
+  const filled = Array.from({ length: repeat }, () => items).flat()
   const animClass = reverse ? 'marquee-row-right' : 'marquee-row-left'
   return (
     <div
@@ -28,7 +28,7 @@ function MarqueeRow({ items, reverse }: { items: { name: string }[]; reverse?: b
       style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}
     >
       <div className={`flex gap-2 ${animClass}`} style={{ width: 'max-content' }}>
-        {doubled.map((skill, i) => (
+        {filled.map((skill, i) => (
           <Badge key={`${skill.name}-${i}`} name={skill.name} />
         ))}
       </div>
@@ -69,23 +69,44 @@ export default function Skills() {
     strokeDasharray: 1,
   }
 
-  const mid = Math.ceil(s.items.length / 2)
-  const row1Items = s.items.slice(0, mid)
-  const row2Items = s.items.slice(mid)
+  // Fade transition: renderedFilter trails activeFilter by 180ms
+  const [renderedFilter, setRenderedFilter] = useState(activeFilter)
+  const [fading, setFading] = useState(false)
 
-  const filteredByCategory = activeFilter
-    ? s.filters
-        .filter(f => f.key === activeFilter)
-        .map(f => ({
-          label: f.label,
-          key: f.key,
-          items: s.items.filter(i => i.category === f.key),
-        }))
-    : s.filters.map(f => ({
-        label: f.label,
-        key: f.key,
-        items: s.items.filter(i => i.category === f.key),
-      }))
+  // Experience hint — shown only the first time a filter is activated
+  const expHintShownRef = useRef(false)
+  const [expHintActive, setExpHintActive] = useState(false)
+  const [expHintVisible, setExpHintVisible] = useState(false)
+  const [expTextVisible, setExpTextVisible] = useState(false)
+
+  useEffect(() => {
+    if (activeFilter === renderedFilter) return
+    setFading(true)
+    const t = setTimeout(() => {
+      setRenderedFilter(activeFilter)
+      setFading(false)
+    }, 180)
+    return () => clearTimeout(t)
+  }, [activeFilter])
+
+  useEffect(() => {
+    if (activeFilter && !expHintShownRef.current) {
+      expHintShownRef.current = true
+      setExpHintActive(true)
+      setExpHintVisible(true)
+      const t1 = setTimeout(() => setExpTextVisible(true), 900)
+      const t2 = setTimeout(() => setExpHintVisible(false), 4500)
+      return () => { clearTimeout(t1); clearTimeout(t2) }
+    }
+  }, [activeFilter])
+
+  const displayItems = renderedFilter
+    ? s.items.filter(i => i.category === renderedFilter)
+    : [...s.items]
+
+  const mid = Math.ceil(displayItems.length / 2)
+  const row1Items = displayItems.slice(0, mid)
+  const row2Items = displayItems.slice(mid)
 
   return (
     <section id="skills" className="border-b px-8 py-20" style={{ borderColor: 'var(--cv-border)' }}>
@@ -174,35 +195,61 @@ export default function Skills() {
           </div>
         </div>
 
-        {/* Carousel — "All" selected */}
-        {!activeFilter && (
-          <div>
-            <MarqueeRow items={row1Items} />
-            <MarqueeRow items={row2Items} reverse />
-          </div>
-        )}
+        <div style={{ opacity: fading ? 0 : 1, transition: 'opacity 0.18s ease' }}>
+          {renderedFilter ? (
+            /* Static centered grid when filter active */
+            <div className="flex flex-wrap gap-2 py-4 justify-center">
+              {displayItems.map(skill => (
+                <Badge key={skill.name} name={skill.name} />
+              ))}
+            </div>
+          ) : (
+            /* Animated marquee when showing all */
+            <>
+              <MarqueeRow items={row1Items} />
+              <MarqueeRow items={row2Items} reverse />
+            </>
+          )}
+        </div>
 
-        {/* Category cards — filter active */}
-        {activeFilter && (
-          <div className="grid grid-cols-1 gap-4">
-            {filteredByCategory.map(cat => (
-              <div
-                key={cat.key}
-                className="rounded-2xl p-6"
-                style={{ background: 'var(--cv-surface)', border: '1px solid var(--cv-border)' }}
-              >
-                <div className="mb-4 text-[10px] uppercase tracking-[2px]" style={{ color: 'var(--cv-muted)' }}>
-                  {cat.label}
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {cat.items.map(skill => (
-                    <Badge key={skill.name} name={skill.name} />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-        )}
+        {/* One-time hint pointing down toward experience section */}
+        <div
+          className="pointer-events-none flex items-center justify-center gap-2 mt-2"
+          style={{ opacity: expHintVisible ? 1 : 0, transition: 'opacity 0.4s ease' }}
+          aria-hidden="true"
+        >
+          <span
+            className="text-[18px] -rotate-2 whitespace-nowrap overflow-hidden"
+            style={{
+              fontFamily: 'var(--font-hand)',
+              color: 'var(--cv-heading)',
+              clipPath: expTextVisible ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
+              transition: 'clip-path 0.7s ease-out',
+            }}
+          >
+            {s.hint_experience}
+          </span>
+          <svg width="26" height="40" viewBox="0 0 26 40" fill="none">
+            <path
+              d="M14 2 C 10 10, 15 18, 12 32"
+              pathLength={1}
+              style={{
+                ...hintStroke,
+                strokeDashoffset: expHintActive ? 0 : 1,
+                transition: 'stroke-dashoffset 0.8s ease-out 0.1s',
+              }}
+            />
+            <path
+              d="M5 26 C 8 29, 10 32, 12 34 C 14 31, 17 28, 20 26"
+              pathLength={1}
+              style={{
+                ...hintStroke,
+                strokeDashoffset: expHintActive ? 0 : 1,
+                transition: 'stroke-dashoffset 0.35s ease-out 0.85s',
+              }}
+            />
+          </svg>
+        </div>
 
       </div>
     </section>

@@ -122,6 +122,7 @@ export const content = {
     skills: {
       section_label: '03 — Skills',
       hint_filter: 'filtrá por categoría',
+      hint_experience: 'mirá la experiencia',
       filter_all: 'Todos',
       filters: [
         { key: 'backend', label: 'Backend' },
@@ -385,6 +386,7 @@ export const content = {
     skills: {
       section_label: '03 — Skills',
       hint_filter: 'filter by category',
+      hint_experience: 'check experience too',
       filter_all: 'All',
       filters: [
         { key: 'backend', label: 'Backend' },
