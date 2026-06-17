@@ -257,7 +257,7 @@ export const content = {
         { icon: '✉️', name: 'Email', handle: 'rodriguez.ma@protonmail.com', href: 'mailto:rodriguez.ma@protonmail.com' },
         { icon: '💬', name: 'WhatsApp', handle: '+54 9 388 470-1268', href: 'https://wa.me/5493884701268?text=Hola%20Mat%C3%ADas!%20Vi%20tu%20CV%20y%20quer%C3%ADa%20hacerte%20una%20consulta.' },
         { icon: '🐙', name: 'GitHub', handle: 'github.com/alexmnotfound', href: 'https://github.com/alexmnotfound' },
-        { icon: '💼', name: 'LinkedIn', handle: 'linkedin.com/in/matias-rodriguez', href: 'https://linkedin.com/in/matias-rodriguez' },
+        { icon: '💼', name: 'LinkedIn', handle: 'linkedin.com/in/mrodriguez-ar/', href: 'https://linkedin.com/in/mrodriguez-ar/' },
       ],
     },
     footer: {
@@ -521,7 +521,7 @@ export const content = {
         { icon: '✉️', name: 'Email', handle: 'rodriguez.ma@protonmail.com', href: 'mailto:rodriguez.ma@protonmail.com' },
         { icon: '💬', name: 'WhatsApp', handle: '+54 9 388 470-1268', href: 'https://wa.me/5493884701268?text=Hi%20Mat%C3%ADas!%20I%20saw%20your%20CV%20and%20wanted%20to%20reach%20out.' },
         { icon: '🐙', name: 'GitHub', handle: 'github.com/alexmnotfound', href: 'https://github.com/alexmnotfound' },
-        { icon: '💼', name: 'LinkedIn', handle: 'linkedin.com/in/matias-rodriguez', href: 'https://linkedin.com/in/matias-rodriguez' },
+        { icon: '💼', name: 'LinkedIn', handle: 'linkedin.com/in/mrodriguez-ar/', href: 'https://linkedin.com/in/mrodriguez-ar/' },
       ],
     },
     footer: {
